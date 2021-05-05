@@ -6,24 +6,44 @@ import { signUp } from '../../store/session';
 const SignUpForm = () => {
   const dispatch = useDispatch();
   const user = useSelector(state => state.session.user);
-  const [username, setUsername] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
+  const [city, setCity] = useState("");
+  const [state, setState] = useState("");
+  const [bio, setBio] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
 
-  const onSignUp = async (e) => {
+  const onSignUp = (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      await dispatch(signUp(username, email, password));
+      dispatch(signUp(firstName, lastName, email, city, state, bio, password));
     }
   };
 
-  const updateUsername = (e) => {
-    setUsername(e.target.value);
+  const updateFirstName = (e) => {
+    setFirstName(e.target.value);
+  };
+
+  const updateLastName = (e) => {
+    setLastName(e.target.value);
   };
 
   const updateEmail = (e) => {
     setEmail(e.target.value);
+  };
+
+  const updateCity = (e) => {
+    setCity(e.target.value);
+  };
+
+  const updateState = (e) => {
+    setState(e.target.value);
+  };
+
+  const updateBio = (e) => {
+    setBio(e.target.value);
   };
 
   const updatePassword = (e) => {
@@ -35,18 +55,27 @@ const SignUpForm = () => {
   };
 
   if (user) {
-    return <Redirect to="/" />;
+    return <Redirect to="/profiles/me" />;
   }
 
   return (
     <form onSubmit={onSignUp}>
       <div>
-        <label>User Name</label>
+        <label>First Name</label>
         <input
           type="text"
-          name="username"
-          onChange={updateUsername}
-          value={username}
+          name="firstName"
+          onChange={updateFirstName}
+          value={firstName}
+        ></input>
+      </div>
+      <div>
+        <label>Last Name</label>
+        <input
+          type="text"
+          name="lastName"
+          onChange={updateLastName}
+          value={lastName}
         ></input>
       </div>
       <div>
@@ -57,6 +86,33 @@ const SignUpForm = () => {
           onChange={updateEmail}
           value={email}
         ></input>
+      </div>
+      <div>
+        <label>City</label>
+        <input
+          type="text"
+          name="city"
+          onChange={updateCity}
+          value={city}
+        ></input>
+      </div>
+      <div>
+        <label>State</label>
+        <input
+          type="text"
+          name="state"
+          onChange={updateState}
+          value={state}
+        ></input>
+      </div>
+      <div>
+        <label>Bio</label>
+        <textarea
+          type="text"
+          name="bio"
+          onChange={updateBio}
+          value={bio}
+        ></textarea>
       </div>
       <div>
         <label>Password</label>

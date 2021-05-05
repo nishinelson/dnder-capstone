@@ -69,7 +69,7 @@ class PC(db.Model):
   description = db.Column(db.String(2000))
   userId = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
   user = db.relationship('User', back_populates='pc')
-  dms = db.relationship("DM", secondary=party, back_populates="PCs")
+  dms = db.relationship("DM", secondary=party, back_populates="pcs")
 
 
 class DM(db.Model):
@@ -84,4 +84,4 @@ class DM(db.Model):
   description = db.Column(db.String(2000))
   userId = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
   user = db.relationship('User', back_populates='dm')
-  pcs = db.relationship("PC", secondary=party, back_populates="DMs")
+  pcs = db.relationship("PC", secondary=party, back_populates="dms")
