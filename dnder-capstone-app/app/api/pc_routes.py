@@ -16,10 +16,11 @@ def getPC():
 def addPC():
   id = current_user.id
   new_pc = PC()
-  new_pc.request.get_json()['pcClass']
-  new_pc.request.get_json()['experience']
-  new_pc.request.get_json()['description']
+  new_pc.pcClass = request.get_json()['pcClass']
+  new_pc.experience = request.get_json()['experience']
+  new_pc.description = request.get_json()['description']
   new_pc.userId = id
   db.session.add(new_pc)
   db.session.commit()
-  return {}
+  print(new_pc.to_dict(), "=====================================")
+  return new_pc.to_dict()

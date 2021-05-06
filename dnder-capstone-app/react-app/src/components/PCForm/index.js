@@ -1,10 +1,11 @@
 import React, { useState } from "react"
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from 'react-router-dom';
-import addPC from '../../store/pc'
+import { Redirect, useHistory } from 'react-router-dom';
+import { addPC } from '../../store/pc'
 
 const PCForm = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const [pcClass, setpcClass] = useState("");
   const [experience, setExperience] = useState("");
   const [description, setDescription] = useState("");
@@ -18,7 +19,8 @@ const PCForm = () => {
       description: description
     }
     dispatch(addPC(data))
-    return <Redirect to="/profiles/me"/>;
+    console.log(data, "CREATEPC WAS RUN")
+    history.push("/profiles/me");
   }
 
   const updatepcClass = (e) => {

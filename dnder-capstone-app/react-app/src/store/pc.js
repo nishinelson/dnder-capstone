@@ -10,6 +10,7 @@ const setPC = (pc) => {
 export const getPC = () => async (dispatch) => {
   let pcData = await fetch("/api/PC");
   let pc = await pcData.json();
+  console.log(pc, "THIS IS IN THE GETPC THUNK")
   if(pc){
     dispatch(setPC(pc));
     return;
@@ -25,8 +26,8 @@ export const addPC = (pc) => async (dispatch) => {
     body: JSON.stringify(pc)
   })
   let newPC = await response.json()
+  console.log(newPC, "THIS IS IN THE ADDPC THUNK")
   if(newPC){
-    console.log(newPC, "IN THE THUNK++++++++++")
     dispatch(setPC(newPC))
     return
   }
