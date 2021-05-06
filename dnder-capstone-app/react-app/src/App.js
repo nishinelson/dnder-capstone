@@ -10,6 +10,7 @@ import User from "./components/User";
 import ProfilePage from "./components/ProfilePage"
 import Splash from "./components/Splash"
 import PCForm from "./components/PCForm"
+import DMForm from "./components/DMForm"
 // import { authenticate } from "./services/auth";
 import { authenticate } from "./store/session";
 
@@ -50,6 +51,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path="/PC" exact={true}>
           <PCForm/>
+        </ProtectedRoute>
+        <ProtectedRoute path="/DM" exact={true}>
+          <DMForm/>
         </ProtectedRoute>
         <Route path="/" exact={true}>
           <Splash/>

@@ -94,3 +94,15 @@ class DM(db.Model):
   userId = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
   user = db.relationship('User', back_populates='dm')
   pcs = db.relationship("PC", secondary=party, back_populates="dms")
+
+  def to_dict(self):
+    return {
+      "id": self.id,
+      "campaign": self.campaign,
+      "resources": self.resources,
+      "experience": self.experience,
+      "partySize": self.partySize,
+      "groupType": self.groupType,
+      "description": self.description,
+      "userId": self.userId
+     }

@@ -14,7 +14,11 @@ export const getPC = () => async (dispatch) => {
   if(pc){
     dispatch(setPC(pc));
     return;
+  } else {
+    dispatch(setPC({}))
+    return
   }
+
 }
 
 export const addPC = (pc) => async (dispatch) => {
@@ -38,7 +42,7 @@ const initialState = {};
 export default function pc(state = initialState, action) {
   switch(action.type) {
     case SET_PC:
-      return { ...state, ...action.pc };
+      return { ...state, ...action.payload };
     default:
       return state;
   }
