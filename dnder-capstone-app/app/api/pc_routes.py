@@ -8,7 +8,12 @@ pc_routes = Blueprint('pc', __name__)
 @pc_routes.route('')
 @login_required
 def getPC():
-  return 'PC'
+  id = current_user.id
+  pc = PC.query.filter(PC.userId == id).first()
+  if pc:
+    return pc.to_dict()
+  else:
+    return {}
 
 
 @pc_routes.route('/new', methods=['POST'])

@@ -1,6 +1,6 @@
 import React, { useState } from "react"
-import { useDispatch, useSelector } from "react-redux";
-import { Redirect, useHistory } from 'react-router-dom';
+import { useDispatch } from "react-redux";
+import { useHistory } from 'react-router-dom';
 import { addPC } from '../../store/pc'
 
 const PCForm = () => {
@@ -40,7 +40,7 @@ const PCForm = () => {
       <div>
         <label>Character Class</label>
         <select name="pcClass" onChange={updatepcClass} value={pcClass}>
-          <option value="">--Select Your Class</option>
+          <option value="">--Select Your Class--</option>
           <option value="barbarian">Barbarian</option>
           <option value="bard">Bard</option>
           <option value="cleric">Cleric</option>
