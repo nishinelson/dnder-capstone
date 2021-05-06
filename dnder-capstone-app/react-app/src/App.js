@@ -9,6 +9,7 @@ import UsersList from "./components/UsersList";
 import User from "./components/User";
 import ProfilePage from "./components/ProfilePage"
 import Splash from "./components/Splash"
+import PCForm from "./components/PCForm"
 // import { authenticate } from "./services/auth";
 import { authenticate } from "./store/session";
 
@@ -46,6 +47,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path="/profiles/me" exact={true}>
           <ProfilePage/>
+        </ProtectedRoute>
+        <ProtectedRoute path="/PC" exact={true}>
+          <PCForm/>
         </ProtectedRoute>
         <Route path="/" exact={true}>
           <Splash/>

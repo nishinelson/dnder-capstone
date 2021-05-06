@@ -1,17 +1,26 @@
 import React, { useState } from "react"
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
+import { addPC } from '../../store/pc'
 
 const PCForm = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const [pcClass, setpcClass] = useState("");
   const [experience, setExperience] = useState("");
   const [description, setDescription] = useState("");
 
+
   const onCreatePC = (e) => {
     e.preventDefault();
-    dispatch(createPC(pcClass, experience, description))
-    return <Redirect to="/profiles/me"/>;
+    const data = {
+      pcClass: pcClass,
+      experience: experience,
+      description: description
+    }
+    dispatch(addPC(data))
+    console.log(data, "CREATEPC WAS RUN")
+    history.push("/profiles/me");
   }
 
   const updatepcClass = (e) => {

@@ -71,6 +71,15 @@ class PC(db.Model):
   user = db.relationship('User', back_populates='pc')
   dms = db.relationship("DM", secondary=party, back_populates="pcs")
 
+  def to_dict(self):
+    return {
+      "id": self.id,
+      "pcClass": self.pcClass,
+      "experience": self.experience,
+      "description": self.description,
+      "userId": self.userId
+    }
+
 
 class DM(db.Model):
   __tablename__ = 'DMs'
