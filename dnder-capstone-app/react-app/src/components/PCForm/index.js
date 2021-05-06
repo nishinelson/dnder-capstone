@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from 'react-router-dom';
+import addPC from '../../store/pc'
 
 const PCForm = () => {
   const dispatch = useDispatch();
@@ -8,9 +9,15 @@ const PCForm = () => {
   const [experience, setExperience] = useState("");
   const [description, setDescription] = useState("");
 
+
   const onCreatePC = (e) => {
     e.preventDefault();
-    dispatch(createPC(pcClass, experience, description))
+    const data = {
+      pcClass: pcClass,
+      experience: experience,
+      description: description
+    }
+    dispatch(addPC(data))
     return <Redirect to="/profiles/me"/>;
   }
 
