@@ -30,5 +30,28 @@ def addDM():
   new_dm.userId = id
   db.session.add(new_dm)
   db.session.commit()
-  print(new_dm.to_dict(), "=====================================")
   return new_dm.to_dict()
+
+@dm_routes.route('/edit', methods=['POST'])
+@login_required
+def editDM():
+  id = current_user.id
+  dm = DM.query.filter(DM.userId == id).first()
+  dm.campaign = request.get_json()['campaign']
+  dm.resources = request.get_json()['resources']
+  dm.experience = request.get_json()['experience']
+  dm.partySize = request.get_json()['partySize']
+  dm.groupType = request.get_json()['groupType']
+  dm.description = request.get_json()['description']
+  dm.userId = id
+  db.session.commit()
+  return dm.to_dict()
+
+@dm_routes.route('/delete')
+@login_required
+def deleteDM():
+  id = current_user.id
+  dm = DM.query.filter(DM.userId == id).first()
+  db.session.delete(dm)
+  db.session.commit()
+  return {}

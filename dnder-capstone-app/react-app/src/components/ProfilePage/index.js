@@ -1,8 +1,8 @@
 import React, { useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { NavLink } from "react-router-dom"
-import { getPC } from "../../store/pc"
-import { getDM } from "../../store/dm"
+import { getPC, deletePC } from "../../store/pc"
+import { getDM, deleteDM } from "../../store/dm"
 
 const ProfilePage = () => {
   const dispatch = useDispatch();
@@ -19,6 +19,14 @@ const ProfilePage = () => {
   let pcRender;
   let dmRender;
 
+  const deletePCcard = () => {
+    dispatch(deletePC())
+  }
+
+  const deleteDMcard = () => {
+    dispatch(deleteDM())
+  }
+
   if(Object.keys(char).length) {
     pcRender = (
       <div>
@@ -28,6 +36,7 @@ const ProfilePage = () => {
         <div>
           <NavLink to="/PC">Edit PC</NavLink>
         </div>
+        <button onClick={deletePCcard}>Delete PC</button>
       </div>
     )
   } else {
@@ -47,7 +56,12 @@ const ProfilePage = () => {
         <div>{dunMas.partySize}</div>
         <div>{dunMas.groupType}</div>
         <div>{dunMas.description}</div>
+        <div>
+          <NavLink to="/DM">Edit DM</NavLink>
+        </div>
+        <button onClick={deleteDMcard}>Delete PC</button>
       </div>
+
     )
   } else {
     dmRender = (
