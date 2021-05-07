@@ -7,7 +7,7 @@ const PCForm = () => {
   const dispatch = useDispatch();
   const char = useSelector((state) => state?.pc)
   const history = useHistory();
-  const [pcClass, setpcClass] = useState(char.pcClass) || "";
+  const [pcClass, setpcClass] = useState(char.pcClass || "") ;
   const [experience, setExperience] = useState(char.experience) || "";
   const [description, setDescription] = useState(char.description) || "";
 
@@ -20,6 +20,7 @@ const PCForm = () => {
   // setpcClass(char.pcClass);
   // setExperience(char.experience);
   // setDescription(char.description);
+
   if(Object.keys(char).length){
     btn = <button type="submit">Edit PC</button>
   }
