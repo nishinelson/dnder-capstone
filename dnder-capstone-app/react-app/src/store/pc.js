@@ -37,6 +37,22 @@ export const addPC = (pc) => async (dispatch) => {
   }
 }
 
+export const editPC = (pc) => async (dispatch) => {
+  const response = await fetch("/api/PC/edit", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(pc)
+  })
+  let newPC = await response.json()
+  console.log(newPC, "THIS IS IN THE EDITPC THUNK")
+  if(newPC){
+    dispatch(setPC(newPC))
+    return
+  }
+}
+
 const initialState = {};
 
 export default function pc(state = initialState, action) {
