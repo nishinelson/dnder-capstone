@@ -27,7 +27,6 @@ def addPC():
   new_pc.userId = id
   db.session.add(new_pc)
   db.session.commit()
-  print(new_pc.to_dict(), "=====================================")
   return new_pc.to_dict()
 
 @pc_routes.route('/edit', methods=['POST'])
@@ -40,5 +39,13 @@ def editPC():
   pc.description = request.get_json()['description']
   pc.userId = id
   db.session.commit()
-  print(pc.to_dict(), "=====================================")
   return pc.to_dict()
+
+@pc_routes.route('/delete')
+@login_required
+def deletePC():
+  id = current_user.id
+  pc = PC.query.filter(PC.userId == id).first()
+  db.session.delete(pc)
+  db.session.commit()
+  return {}

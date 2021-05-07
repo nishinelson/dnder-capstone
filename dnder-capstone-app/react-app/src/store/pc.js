@@ -1,4 +1,5 @@
 const SET_PC = "pc/SET_PC";
+const REMOVE_PC = "pc/REMOVE_PC"
 
 const setPC = (pc) => {
   return {
@@ -6,6 +7,21 @@ const setPC = (pc) => {
     payload: pc
   };
 };
+
+const removePC = () => {
+  return {
+    type: REMOVE_PC
+  }
+}
+
+export const clearPC = () => async (dispatch) => {
+  dispatch(removePC())
+}
+
+export const deletePC = () => async (dispatch) => {
+  fetch("/api/PC/delete")
+  dispatch(removePC())
+}
 
 export const getPC = () => async (dispatch) => {
   let pcData = await fetch("/api/PC");
@@ -59,6 +75,8 @@ export default function pc(state = initialState, action) {
   switch(action.type) {
     case SET_PC:
       return { ...state, ...action.payload };
+    case REMOVE_PC:
+      return {};
     default:
       return state;
   }

@@ -1,17 +1,24 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from 'react-router-dom';
-import { addDM } from '../../store/dm'
+import { addDM, editDM } from '../../store/dm'
 
 const DMForm = () => {
   const dispatch = useDispatch();
+  const dunMas = useSelector((state) => state?.dm)
   const history = useHistory();
-  const [campaign, setCampaign] = useState("");
-  const [resources, setResources] = useState("");
-  const [partySize, setPartySize] = useState(0);
-  const [groupType, setGroupType] = useState("");
-  const [experience, setExperience] = useState("");
-  const [description, setDescription] = useState("");
+  const [campaign, setCampaign] = useState(dunMas.campaign || "");
+  const [resources, setResources] = useState(dunMas.resources || "");
+  const [partySize, setPartySize] = useState(dunMas.partySize || 0);
+  const [groupType, setGroupType] = useState(dunMas.groupType || "");
+  const [experience, setExperience] = useState(dunMas.experience || "");
+  const [description, setDescription] = useState(dunMas.description || "");
+
+  let btn = <button type=" submit">Create DM</button>
+
+  if(Object.keys(dunMas).length) {
+    btn = <button type=" submit">Edit DM</button>
+  }
 
   const onCreateDM = (e) => {
     e.preventDefault();
@@ -23,6 +30,13 @@ const DMForm = () => {
       experience: experience,
       description: description
     }
+
+    if(Object.keys(dunMas).length){
+      dispatch(editDM(data))
+      history.push("/profiles/me");
+      return
+    }
+
     dispatch(addDM(data))
     console.log(data, "CREATEPC WAS RUN")
     history.push("/profiles/me");
@@ -107,7 +121,7 @@ const DMForm = () => {
         value={description}
         ></textarea>
       </div>
-      <button type="submit">Create DM</button>
+      {btn}
     </form>
   )
 }
