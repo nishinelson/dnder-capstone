@@ -1,7 +1,13 @@
 import React from "react"
-import { NavLink } from "react-router-dom"
+import { NavLink, Redirect } from "react-router-dom"
+import { useSelector } from "react-redux"
 
 const Splash = () => {
+  const user = useSelector(state => state.session.user)
+
+  if (user){
+    return <Redirect to="/profiles/me" />
+  }
 
   return (
     <div>

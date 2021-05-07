@@ -2,16 +2,19 @@ import React, { useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { NavLink } from "react-router-dom"
 import { getPC } from "../../store/pc"
+import { getDM } from "../../store/dm"
 
 const ProfilePage = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state?.session?.user);
-  const char = useSelector((state) => state?.pc);
-  const dunMas = useSelector((state) => state?.dm);
 
   useEffect(() => {
     dispatch(getPC());
+    dispatch(getDM());
   }, []);
+
+  const char = useSelector((state) => state?.pc);
+  const dunMas = useSelector((state) => state?.dm);
 
   let pcRender;
   let dmRender;
@@ -22,6 +25,9 @@ const ProfilePage = () => {
         <div>{char.pcClass}</div>
         <div>{char.experience}</div>
         <div>{char.description}</div>
+        <div>
+          <NavLink to="/PC">Edit PC</NavLink>
+        </div>
       </div>
     )
   } else {

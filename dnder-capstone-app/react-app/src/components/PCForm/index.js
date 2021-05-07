@@ -1,14 +1,28 @@
-import React, { useState } from "react"
-import { useDispatch } from "react-redux";
+import React, { useState, useEffect } from "react"
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from 'react-router-dom';
-import { addPC } from '../../store/pc'
+import { addPC, editPC, getPC } from '../../store/pc'
 
 const PCForm = () => {
   const dispatch = useDispatch();
+  const char = useSelector((state) => state?.pc)
   const history = useHistory();
-  const [pcClass, setpcClass] = useState("");
-  const [experience, setExperience] = useState("");
-  const [description, setDescription] = useState("");
+  const [pcClass, setpcClass] = useState(char.pcClass) || "";
+  const [experience, setExperience] = useState(char.experience) || "";
+  const [description, setDescription] = useState(char.description) || "";
+
+  // useEffect(() => {
+  //   dispatch(getPC());
+  // }, []);
+
+  let btn = <button type="submit">Create PC</button>
+
+  // setpcClass(char.pcClass);
+  // setExperience(char.experience);
+  // setDescription(char.description);
+  if(Object.keys(char).length){
+    btn = <button type="submit">Edit PC</button>
+  }
 
 
   const onCreatePC = (e) => {
@@ -18,6 +32,14 @@ const PCForm = () => {
       experience: experience,
       description: description
     }
+
+    if(Object.keys(char).length){
+      dispatch(editPC(data))
+      console.log(data, "EDITPC WAS RUN")
+      history.push("/profiles/me");
+      return
+    }
+
     dispatch(addPC(data))
     console.log(data, "CREATEPC WAS RUN")
     history.push("/profiles/me");
@@ -73,7 +95,7 @@ const PCForm = () => {
         value={description}
         ></textarea>
       </div>
-      <button type="submit">Create PC</button>
+      {btn}
     </form>
   )
 

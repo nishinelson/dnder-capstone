@@ -29,3 +29,16 @@ def addPC():
   db.session.commit()
   print(new_pc.to_dict(), "=====================================")
   return new_pc.to_dict()
+
+@pc_routes.route('/edit', methods=['POST'])
+@login_required
+def editPC():
+  id = current_user.id
+  pc = PC.query.filter(PC.userId == id).first()
+  pc.pcClass = request.get_json()['pcClass']
+  pc.experience = request.get_json()['experience']
+  pc.description = request.get_json()['description']
+  pc.userId = id
+  db.session.commit()
+  print(pc.to_dict(), "=====================================")
+  return pc.to_dict()
