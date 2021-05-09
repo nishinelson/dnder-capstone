@@ -4,4 +4,40 @@
   justify-content: center;
   text-align: center;
   overflow: hidden;
+  min-height: 80vh;
+  width: 100vw;
+  box-sizing: border-box;
+}
+
+.swipeSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.cardContainer {
+  max-width: 260px;
+  height: 300px;
+  transform: translateX(-131px);
+}
+
+.swipe {
+  position: absolute;
+}
+
+.card {
+  width: 260px;
+  height: 300px;
+  border: 1px solid black;
+  border-radius: 20px;
+  position: relative;
+  background: url('../../images/sorcerer.png');
+  background-size: cover;
+  background-color: aliceblue;
+}
+
+.cardInfo {
+  position: absolute;
+  bottom: 0;
 }

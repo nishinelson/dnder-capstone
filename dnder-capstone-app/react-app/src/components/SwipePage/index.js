@@ -2,6 +2,7 @@ import React, { useState, useMemo } from 'react';
 import TinderCard from 'react-tinder-card'
 import './SwipePage.css'
 
+
 // const SwipePage = () => {
 
 //   const onSwipe = (direction) => {
@@ -24,23 +25,25 @@ import './SwipePage.css'
 const db = [
   {
     name: 'Richard Hendricks',
-    url: './img/richard.jpg'
+    url: '../../images/ranger.png'
   },
   {
     name: 'Erlich Bachman',
-    url: './img/erlich.jpg'
+    url: '../../images/warlock.png'
   },
   {
     name: 'Monica Hall',
-    url: './img/monica.jpg'
+    url: '../../images/monk.png'
   },
   {
     name: 'Jared Dunn',
-    url: './img/jared.jpg'
+    url: '../../images/wizard.png'
   },
   {
     name: 'Dinesh Chugtai',
-    url: './img/dinesh.jpg'
+    class: 'sorcerer',
+    description: 'wild magic sorcerer who has trouble not exploding',
+    url: '../../images/bard.png'
   }
 ]
 
@@ -77,15 +80,19 @@ function SwipePage () {
 
   return (
     <div className='pageRoot'>
-      <div>
+      <div className='swipeSection'>
         {/* <link href='https://fonts.googleapis.com/css?family=Damion&display=swap' rel='stylesheet' /> */}
         {/* <link href='https://fonts.googleapis.com/css?family=Alatsi&display=swap' rel='stylesheet' /> */}
-        <h1>React Tinder Card</h1>
+        <h1>Search for players!</h1>
         <div className='cardContainer'>
           {characters.map((character, index) =>
             <TinderCard ref={childRefs[index]} className='swipe' key={character.name} onSwipe={(dir) => swiped(dir, character.name)} onCardLeftScreen={() => outOfFrame(character.name)}>
-              <div style={{ backgroundImage: 'url(' + character.url + ')' }} className='card'>
-                <h3>{character.name}</h3>
+              <div className='card'>
+                <div className='cardInfo'>
+                  <h3>{character.name}</h3>
+                  <div>{character.class}</div>
+                  <div>{character.description}</div>
+                </div>
               </div>
             </TinderCard>
           )}
