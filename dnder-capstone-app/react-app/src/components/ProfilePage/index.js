@@ -78,6 +78,7 @@ const ProfilePage = () => {
         {user.city}
         {user.bio}
       </div>
+      <NavLink to="/swipe">Swipe!</NavLink>
       {pcRender}
       {dmRender}
     </div>
