@@ -8,10 +8,10 @@ class User(db.Model, UserMixin):
 
   id = db.Column(db.Integer, primary_key=True)
   firstName = db.Column(db.String(40), nullable=False, unique=True)
-  lastName = db.Column(db.String(40), nullable=False, unique=True)
+  lastName = db.Column(db.String(40), nullable=False)
   email = db.Column(db.String(255), nullable=False, unique=True)
   city = db.Column(db.String(50), nullable=False)
-  state = db.Column(db.String(50), nullable=False)
+  state = db.Column(db.String(2), nullable=False)
   bio = db.Column(db.String(2000))
   hashed_password = db.Column(db.String(255), nullable=False)
   pc = db.relationship("PC", uselist=False, back_populates="user")
@@ -67,9 +67,11 @@ class PC(db.Model):
   pcClass = db.Column(db.String(40), nullable=False)
   experience = db.Column(db.String(25), nullable=False)
   description = db.Column(db.String(2000))
+  groupType = db.Column(db.String(25), nullable=False)
   userId = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
   user = db.relationship('User', back_populates='pc')
   dms = db.relationship("DM", secondary=party, back_populates="pcs")
+  pcSwipe = db.relationship("Match", back_populates='pcMatch')
 
   def to_dict(self):
     return {
@@ -94,6 +96,7 @@ class DM(db.Model):
   userId = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
   user = db.relationship('User', back_populates='dm')
   pcs = db.relationship("PC", secondary=party, back_populates="dms")
+  dmSwipe = db.relationship("Match", back_populates="dmMatch")
 
   def to_dict(self):
     return {
@@ -106,3 +109,19 @@ class DM(db.Model):
       "description": self.description,
       "userId": self.userId
      }
+
+
+class Match(db.Model):
+  __tablename__ = 'matches'
+  __table_args__ = (
+    db.UniqueConstraint('pcId', 'dmId', name='swipe_match'),
+  )
+
+  id = db.Column(db.Integer, primary_key=True)
+  pcId = db.Column(db.Integer, db.ForeignKey('PCs.id'), nullable=False)
+  dmId = db.Column(db.Integer, db.ForeignKey('DMs.id'), nullable=False)
+  dmSwipeBool = db.Column(db.Boolean)
+  pcSwipeBool = db.Column(db.Boolean)
+
+  pcMatch = db.relationship('PC', back_populates='pcSwipe')
+  dmMatch = db.relationship('DM', back_populates='dmSwipe')

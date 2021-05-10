@@ -9,7 +9,7 @@ const DMForm = () => {
   const history = useHistory();
   const [campaign, setCampaign] = useState(dunMas.campaign || "");
   const [resources, setResources] = useState(dunMas.resources || "");
-  const [partySize, setPartySize] = useState(dunMas.partySize || 0);
+  const [partySize, setPartySize] = useState(dunMas.partySize || "");
   const [groupType, setGroupType] = useState(dunMas.groupType || "");
   const [experience, setExperience] = useState(dunMas.experience || "");
   const [description, setDescription] = useState(dunMas.description || "");
@@ -88,12 +88,12 @@ const DMForm = () => {
       </div>
       <div>
         <lable>Party Size</lable>
-        <input
-        type="number"
-        name="partySize"
-        onChange={updatePartySize}
-        value={partySize}
-        ></input>
+        <select name="partySize" onChange={updatePartySize} value={partySize}>
+          <option value="">--party size--</option>
+          <option value="1-3">1-3</option>
+          <option value="4-6">4-6</option>
+          <option value="7+">7+</option>
+        </select>
       </div>
       <div>
         <label>Group Type</label>
