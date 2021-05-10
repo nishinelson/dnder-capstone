@@ -25,23 +25,27 @@ import './SwipePage.css'
 const db = [
   {
     name: 'Richard Hendricks',
+    class: 'ranger',
     url: '../../images/ranger.png'
   },
   {
     name: 'Erlich Bachman',
+    class: 'warlock',
     url: '../../images/warlock.png'
   },
   {
     name: 'Monica Hall',
+    class: 'monk',
     url: '../../images/monk.png'
   },
   {
     name: 'Jared Dunn',
+    class: 'wizard',
     url: '../../images/wizard.png'
   },
   {
     name: 'Dinesh Chugtai',
-    class: 'sorcerer',
+    class: 'bard',
     description: 'wild magic sorcerer who has trouble not exploding',
     url: '../../images/bard.png'
   }
@@ -87,7 +91,7 @@ function SwipePage () {
         <div className='cardContainer'>
           {characters.map((character, index) =>
             <TinderCard ref={childRefs[index]} className='swipe' key={character.name} onSwipe={(dir) => swiped(dir, character.name)} onCardLeftScreen={() => outOfFrame(character.name)}>
-              <div className='card'>
+              <div className={`card ${character.class}`}>
                 <div className='cardInfo'>
                   <h3>{character.name}</h3>
                   <div>{character.class}</div>

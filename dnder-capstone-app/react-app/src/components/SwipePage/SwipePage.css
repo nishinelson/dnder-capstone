@@ -32,7 +32,7 @@
   border: 1px solid black;
   border-radius: 20px;
   position: relative;
-  background: url('../../images/sorcerer.png');
+  /* background: url('../../images/sorcerer.png'); */
   background-size: cover;
   background-color: aliceblue;
 }
@@ -40,4 +40,34 @@
 .cardInfo {
   position: absolute;
   bottom: 0;
+}
+
+.bard{
+  background: url('../../images/bard.png');
+  background-size: cover;
+  background-color: aliceblue;
+}
+
+.monk {
+  background: url('../../images/monk.png');
+  background-size: cover;
+  background-color: aliceblue;
+}
+
+.ranger {
+  background: url('../../images/ranger.png');
+  background-size: cover;
+  background-color: aliceblue;
+}
+
+.warlock {
+  background: url('../../images/warlock.png');
+  background-size: cover;
+  background-color: aliceblue;
+}
+
+.wizard{
+  background: url('../../images/wizard.png');
+  background-size: cover;
+  background-color: aliceblue;
 }
