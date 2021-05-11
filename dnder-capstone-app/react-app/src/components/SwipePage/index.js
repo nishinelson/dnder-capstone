@@ -1,18 +1,30 @@
 import React, { useEffect, useState } from 'react'
 import TinderCard from 'react-tinder-card'
 import { useSelector, useDispatch } from 'react-redux'
+import { useParams } from 'react-router-dom';
 import { setLocalPCSwipes, setRemotePCSwipes, setLocalDMSwipes, setRemoteDMSwipes } from '../../store/swipe'
 import './SwipePage.css'
 
 
-function SwipePage (swipes) {
+function SwipePage () {
   const cards = useSelector((state) => state?.swipe?.swipes);
   const dispatch = useDispatch();
   const [lastDirection, setLastDirection] = useState()
+  const { card, location } = useParams();
 
-  console.log(swipes)
   useEffect(()=> {
-    dispatch(setLocalPCSwipes())
+    if(card === 'pc' && location === 'local'){
+      dispatch(setLocalPCSwipes())
+    }
+    if(card === 'pc' && location === 'remote'){
+      dispatch(setRemotePCSwipes())
+    }
+    if(card === 'dm' && location === 'local'){
+      dispatch(setLocalDMSwipes())
+    }
+    if(card === 'dm' && location === 'remote'){
+      dispatch(setRemoteDMSwipes())
+    }
   }, [])
 
   const swiped = (direction, nameToDelete) => {
