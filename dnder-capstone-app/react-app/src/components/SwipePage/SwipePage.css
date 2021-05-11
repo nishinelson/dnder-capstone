@@ -91,6 +91,12 @@
   background-color: aliceblue;
 }
 
+.rogue {
+  background: url('../../images/rogue.png');
+  background-size: cover;
+  background-color: aliceblue;
+}
+
 .sorcerer{
   background: url('../../images/sorcerer.png');
   background-size: cover;

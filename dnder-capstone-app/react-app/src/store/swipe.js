@@ -8,7 +8,7 @@ const setSwipes = (swipes) => {
 }
 
 export const setLocalPCSwipes = () => async (dispatch) => {
-  let response = await fetch("api/swipe/pc/local")
+  let response = await fetch("/api/swipe/pc/local")
   if(!response.ok){
     throw response
   }
@@ -17,7 +17,7 @@ export const setLocalPCSwipes = () => async (dispatch) => {
 }
 
 export const setRemotePCSwipes = () => async (dispatch) => {
-  let response = await fetch("api/swipe/pc/remote")
+  let response = await fetch("/api/swipe/pc/remote")
   if(!response.ok){
     throw response
   }
@@ -26,7 +26,7 @@ export const setRemotePCSwipes = () => async (dispatch) => {
 }
 
 export const setLocalDMSwipes = () => async (dispatch) => {
-  let response = await fetch("api/swipe/dm/local")
+  let response = await fetch("/api/swipe/dm/local")
   if(!response.ok){
     throw response
   }
@@ -35,7 +35,7 @@ export const setLocalDMSwipes = () => async (dispatch) => {
 }
 
 export const setRemoteDMSwipes = () => async (dispatch) => {
-  let response = await fetch("api/swipe/dm/remote")
+  let response = await fetch("/api/swipe/dm/remote")
   if(!response.ok){
     throw response
   }

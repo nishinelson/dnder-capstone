@@ -11,7 +11,6 @@ def getLocalPCs():
   id = current_user.id
   pcList = PC.query.join(User).filter(and_(PC.userId != id, PC.groupType == 'in-person')).filter(User.city == current_user.city, User.state == current_user.state).all()
   lst = [pc.to_dict() for pc in pcList]
-  print(lst, "==========================================")
   return {"swipes": lst}
 
 
