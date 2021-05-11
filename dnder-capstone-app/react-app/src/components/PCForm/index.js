@@ -7,9 +7,10 @@ const PCForm = () => {
   const dispatch = useDispatch();
   const char = useSelector((state) => state?.pc)
   const history = useHistory();
-  const [pcClass, setpcClass] = useState(char.pcClass || "") ;
-  const [experience, setExperience] = useState(char.experience || "") ;
-  const [description, setDescription] = useState(char.description || "") ;
+  const [pcClass, setpcClass] = useState(char.pcClass || "");
+  const [experience, setExperience] = useState(char.experience || "");
+  const [description, setDescription] = useState(char.description || "");
+  const [groupType, setGroupType] = useState(char.groupType || "");
 
 
   let btn = <button type="submit">Create PC</button>
@@ -24,7 +25,8 @@ const PCForm = () => {
     const data = {
       pcClass: pcClass,
       experience: experience,
-      description: description
+      description: description,
+      groupType: groupType
     }
 
     if(Object.keys(char).length){
@@ -47,6 +49,10 @@ const PCForm = () => {
 
   const updateDescription = (e) => {
     setDescription(e.target.value);
+  }
+
+  const updateGroupType = (e) => {
+    setGroupType(e.target.value);
   }
 
   return (
@@ -86,6 +92,14 @@ const PCForm = () => {
         onChange={updateDescription}
         value={description}
         ></textarea>
+      </div>
+      <div>
+        <label>Group Type</label>
+        <select name="groupType" onChange={updateGroupType} value={groupType}>
+          <option value="">--in-person or remote?--</option>
+          <option value="in-person">in-person</option>
+          <option value="remote">remote</option>
+        </select>
       </div>
       {btn}
     </form>

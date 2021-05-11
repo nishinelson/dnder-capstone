@@ -30,6 +30,8 @@ const ProfilePage = () => {
   if(Object.keys(char).length) {
     pcRender = (
       <div>
+        <NavLink to="/swipe/dm/local">Search for local DMs!</NavLink>
+        <NavLink to="/swipe/dm/remote">Search for remote DMs!</NavLink>
         <div>{char.pcClass}</div>
         <div>{char.experience}</div>
         <div>{char.description}</div>
@@ -50,6 +52,8 @@ const ProfilePage = () => {
   if(Object.keys(dunMas).length) {
     dmRender = (
       <div>
+        <NavLink to="/swipe/pc/local">Search for local players!</NavLink>
+        <NavLink to="/swipe/pc/remote">Search for remote players!</NavLink>
         <div>{dunMas.campaign}</div>
         <div>{dunMas.resources}</div>
         <div>{dunMas.experience}</div>

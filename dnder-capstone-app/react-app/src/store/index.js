@@ -3,12 +3,14 @@ import thunk from 'redux-thunk';
 import session from './session'
 import pc from './pc'
 import dm from './dm'
+import swipe from './swipe'
 
 
 const rootReducer = combineReducers({
     session,
     pc,
-    dm
+    dm,
+    swipe
 });
 
 let enhancer;
