@@ -26,7 +26,7 @@
   position: absolute;
 }
 
-.card {
+#cardId {
   width: 260px;
   height: 300px;
   border: 1px solid black;
@@ -34,16 +34,41 @@
   position: relative;
   /* background: url('../../images/sorcerer.png'); */
   background-size: cover;
-  background-color: aliceblue;
+  background-color:grey;
 }
 
 .cardInfo {
   position: absolute;
   bottom: 0;
+  color: white;
 }
 
 .bard{
   background: url('../../images/bard.png');
+  background-size: cover;
+  background-color: aliceblue;
+}
+
+.barbarian{
+  background: url('../../images/barbarian.png');
+  background-size: cover;
+  background-color: aliceblue;
+}
+
+.cleric{
+  background: url('../../images/cleric.png');
+  background-size: cover;
+  background-color: aliceblue;
+}
+
+.druid{
+  background: url('../../images/druid.png');
+  background-size: cover;
+  background-color: aliceblue;
+}
+
+.fighter{
+  background: url('../../images/fighter.png');
   background-size: cover;
   background-color: aliceblue;
 }
@@ -54,8 +79,20 @@
   background-color: aliceblue;
 }
 
+.paladin{
+  background: url('../../images/paladin.png');
+  background-size: cover;
+  background-color: aliceblue;
+}
+
 .ranger {
   background: url('../../images/ranger.png');
+  background-size: cover;
+  background-color: aliceblue;
+}
+
+.sorcerer{
+  background: url('../../images/sorcerer.png');
   background-size: cover;
   background-color: aliceblue;
 }

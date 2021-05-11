@@ -1,40 +1,19 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import TinderCard from 'react-tinder-card'
+import { useSelector, useDispatch } from 'react-redux'
+import { setLocalPCSwipes, setRemotePCSwipes, setLocalDMSwipes, setRemoteDMSwipes } from '../../store/swipe'
 import './SwipePage.css'
 
-const db = [
-  {
-    name: 'Richard Hendricks',
-    class: 'ranger',
-    url: '../../images/ranger.png'
-  },
-  {
-    name: 'Erlich Bachman',
-    class: 'warlock',
-    url: '../../images/warlock.png'
-  },
-  {
-    name: 'Monica Hall',
-    class: 'monk',
-    url: '../../images/monk.png'
-  },
-  {
-    name: 'Jared Dunn',
-    class: 'wizard',
-    description: 'wizzy the wizard is iliterate, but doesnt let that stop him from casting spells',
-    url: '../../images/wizard.png'
-  },
-  {
-    name: 'Dinesh Chugtai',
-    class: 'bard',
-    description: 'wild magic sorcerer who has trouble not exploding',
-    url: '../../images/bard.png'
-  }
-]
 
-function SwipePage () {
-  const characters = db
+function SwipePage (swipes) {
+  const cards = useSelector((state) => state?.swipe?.swipes);
+  const dispatch = useDispatch();
   const [lastDirection, setLastDirection] = useState()
+
+  console.log(swipes)
+  useEffect(()=> {
+    dispatch(setLocalPCSwipes())
+  }, [])
 
   const swiped = (direction, nameToDelete) => {
     console.log('removing: ' + nameToDelete)
@@ -45,18 +24,22 @@ function SwipePage () {
     console.log(name + ' left the screen!')
   }
 
+  if(cards){
+    console.log(cards[0])
+  }
+
   return (
     <div className='pageRoot'>
       <div className='swipeSection'>
         <h1>Search for players!</h1>
         <div className='cardContainer'>
-          {characters.map((character) =>
-            <TinderCard className='swipe' key={character.name} onSwipe={(dir) => swiped(dir, character.name)} onCardLeftScreen={() => outOfFrame(character.name)}>
-              <div className={`card ${character.class}`}>
+          {cards?.map((card) =>
+            <TinderCard className='swipe' key={card.id} onSwipe={(dir) => swiped(dir, card.user.firstName)} onCardLeftScreen={() => outOfFrame(card.user.firstName)}>
+              <div id="cardId" className={`card ${card.pcClass}`}>
                 <div className='cardInfo'>
-                  <h3>{character.name}</h3>
-                  <div>{character.class}</div>
-                  <div>{character.description}</div>
+                  <h3>{card.user.firstName}</h3>
+                  <div>{card.pcClass}</div>
+                  <div>{card.description}</div>
                 </div>
               </div>
             </TinderCard>

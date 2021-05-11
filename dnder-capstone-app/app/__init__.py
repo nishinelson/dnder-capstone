@@ -10,6 +10,7 @@ from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
 from .api.pc_routes import pc_routes
 from .api.dm_routes import dm_routes
+from .api.swipe_routes import swipe_routes
 
 from .seeds import seed_commands
 
@@ -35,6 +36,7 @@ app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(pc_routes, url_prefix='/api/PC')
 app.register_blueprint(dm_routes, url_prefix='/api/DM')
+app.register_blueprint(swipe_routes, url_prefix='/api/swipe')
 db.init_app(app)
 Migrate(app, db)
 

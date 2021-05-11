@@ -24,6 +24,7 @@ def addPC():
   new_pc.pcClass = request.get_json()['pcClass']
   new_pc.experience = request.get_json()['experience']
   new_pc.description = request.get_json()['description']
+  new_pc.groupType = request.get_json()['groupType']
   new_pc.userId = id
   db.session.add(new_pc)
   db.session.commit()

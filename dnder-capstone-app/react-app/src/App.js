@@ -12,6 +12,7 @@ import Splash from "./components/Splash"
 import PCForm from "./components/PCForm"
 import DMForm from "./components/DMForm"
 import SwipePage from "./components/SwipePage"
+import { setLocalPCSwipes, setRemotePCSwipes, setLocalDMSwipes, setRemoteDMSwipes } from './store/swipe'
 import "./index.css"
 // import { authenticate } from "./services/auth";
 import { authenticate } from "./store/session";
@@ -57,8 +58,17 @@ function App() {
         <ProtectedRoute path="/DM" exact={true}>
           <DMForm/>
         </ProtectedRoute>
-        <ProtectedRoute path="/swipe" exact={true}>
-          <SwipePage/>
+        <ProtectedRoute path="/swipe/dm/local" exact={true}>
+          <SwipePage swipes={setLocalDMSwipes}/>
+        </ProtectedRoute>
+        <ProtectedRoute path="/swipe/dm/remote" exact={true}>
+          <SwipePage swipes={setRemoteDMSwipes}/>
+        </ProtectedRoute>
+        <ProtectedRoute path="/swipe/pc/local" exact={true}>
+          <SwipePage swipes={setLocalPCSwipes}/>
+        </ProtectedRoute>
+        <ProtectedRoute path="/swipe/pc/remote" exact={true}>
+          <SwipePage swipes={setRemotePCSwipes}/>
         </ProtectedRoute>
         <Route path="/" exact={true}>
           <Splash/>

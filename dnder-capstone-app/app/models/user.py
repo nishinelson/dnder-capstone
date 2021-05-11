@@ -79,7 +79,10 @@ class PC(db.Model):
       "pcClass": self.pcClass,
       "experience": self.experience,
       "description": self.description,
-      "userId": self.userId
+      "groupType": self.groupType,
+      "userId": self.userId,
+      "user": self.user.to_dict()
+      # 'user': [person.to_dict() for person in user]
     }
 
 
@@ -107,7 +110,8 @@ class DM(db.Model):
       "partySize": self.partySize,
       "groupType": self.groupType,
       "description": self.description,
-      "userId": self.userId
+      "userId": self.userId,
+      "user": self.user.to_dict()
      }
 
 
