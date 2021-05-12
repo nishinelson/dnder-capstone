@@ -4,13 +4,15 @@ import session from './session'
 import pc from './pc'
 import dm from './dm'
 import swipe from './swipe'
+import match from './match'
 
 
 const rootReducer = combineReducers({
     session,
     pc,
     dm,
-    swipe
+    swipe,
+    match
 });
 
 let enhancer;
