@@ -13,10 +13,10 @@ const PCForm = () => {
   const [groupType, setGroupType] = useState(char.groupType || "");
 
 
-  let btn = <button type="submit">Create PC</button>
+  let btn = <button className='sign-btn' type="submit">Create PC</button>
 
   if(Object.keys(char).length){
-    btn = <button type="submit">Edit PC</button>
+    btn = <button className='sign-btn' type="submit">Edit PC</button>
   }
 
 
@@ -56,53 +56,55 @@ const PCForm = () => {
   }
 
   return (
-    <form onSubmit={onCreatePC}>
-      <div>
-        <label>Character Class</label>
-        <select name="pcClass" onChange={updatepcClass} value={pcClass}>
-          <option value="">--Select Your Class--</option>
-          <option value="barbarian">Barbarian</option>
-          <option value="bard">Bard</option>
-          <option value="cleric">Cleric</option>
-          <option value="druid">Druid</option>
-          <option value="fighter">Fighter</option>
-          <option value="monk">Monk</option>
-          <option value="paladin">Paladin</option>
-          <option value="ranger">Ranger</option>
-          <option value="rogue">Rogue</option>
-          <option value="sorcerer">Sorcerer</option>
-          <option value="warlock">Warlock</option>
-          <option value="wizard">Wizard</option>
-        </select>
-      </div>
-      <div>
-        <label>Years of Experience</label>
-        <select name="experience" onChange={updateExperience} value={experience}>
-          <option value="">--experience range--</option>
-          <option value="0-1">0-1</option>
-          <option value="1-5">1-5</option>
-          <option value="5+">5+</option>
-        </select>
-      </div>
-      <div>
-        <label>Character Description</label>
-        <textarea
-        type="text"
-        name="description"
-        onChange={updateDescription}
-        value={description}
-        ></textarea>
-      </div>
-      <div>
-        <label>Group Type</label>
-        <select name="groupType" onChange={updateGroupType} value={groupType}>
-          <option value="">--in-person or remote?--</option>
-          <option value="in-person">in-person</option>
-          <option value="remote">remote</option>
-        </select>
-      </div>
-      {btn}
-    </form>
+    <div className='form-container'>
+      <form onSubmit={onCreatePC}>
+        <div>
+          <label>Character Class</label>
+          <select name="pcClass" onChange={updatepcClass} value={pcClass}>
+            <option value="">--Select Your Class--</option>
+            <option value="barbarian">Barbarian</option>
+            <option value="bard">Bard</option>
+            <option value="cleric">Cleric</option>
+            <option value="druid">Druid</option>
+            <option value="fighter">Fighter</option>
+            <option value="monk">Monk</option>
+            <option value="paladin">Paladin</option>
+            <option value="ranger">Ranger</option>
+            <option value="rogue">Rogue</option>
+            <option value="sorcerer">Sorcerer</option>
+            <option value="warlock">Warlock</option>
+            <option value="wizard">Wizard</option>
+          </select>
+        </div>
+        <div>
+          <label>Years of Experience</label>
+          <select name="experience" onChange={updateExperience} value={experience}>
+            <option value="">--experience range--</option>
+            <option value="0-1">0-1</option>
+            <option value="1-5">1-5</option>
+            <option value="5+">5+</option>
+          </select>
+        </div>
+        <div>
+          <label>Character Description</label>
+          <textarea
+          type="text"
+          name="description"
+          onChange={updateDescription}
+          value={description}
+          ></textarea>
+        </div>
+        <div>
+          <label>Group Type</label>
+          <select name="groupType" onChange={updateGroupType} value={groupType}>
+            <option value="">--in-person or remote?--</option>
+            <option value="in-person">in-person</option>
+            <option value="remote">remote</option>
+          </select>
+        </div>
+        {btn}
+      </form>
+    </div>
   )
 
 }

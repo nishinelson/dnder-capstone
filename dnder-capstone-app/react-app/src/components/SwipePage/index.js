@@ -65,7 +65,6 @@ function SwipePage () {
       }
 
       if(dmSwipe){
-        console.log("made it here!!!!!!!!!!!!")
         const data = {
           pcId: cardId,
           dmId: userDM.id,

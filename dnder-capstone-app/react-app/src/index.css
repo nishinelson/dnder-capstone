@@ -1,6 +1,19 @@
 /* TODO Add site wide styles */
+@import url('https://fonts.googleapis.com/css2?family=Merienda&display=swap');
 body {
   display: grid;
   grid-template-rows: 5vh 95vh;
   margin: 0;
+  font-family: 'Merienda', cursive;
+  background-image: url('https://i.imgur.com/J4a7WHN.jpg');
+}
+
+.nav-link {
+  font-size: 34px;
+  text-decoration: none;
+  color: white;
+}
+
+.nav-link:hover {
+  color: darkred;
 }

@@ -12,7 +12,7 @@ const NavBar = () => {
   if(user){
     render = (
       <nav>
-        <NavLink to="/profiles/me" exact={true} activeClassName="active">
+        <NavLink className='nav-link' to="/profiles/me" exact={true}>
             Home
           </NavLink>
           <LogoutButton />
@@ -21,10 +21,10 @@ const NavBar = () => {
   } else {
     render = (
       <nav>
-        <NavLink to="/" exact={true} activeClassName="active">
+        <NavLink className='nav-link' to="/" exact={true} activeClassName="active">
             Home
           </NavLink>
-          <NavLink to="/login" exact={true} activeClassName="active">
+          <NavLink className='nav-link' to="/login" exact={true}>
             Login
           </NavLink>
       </nav>

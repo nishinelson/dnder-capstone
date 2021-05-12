@@ -1,0 +1,119 @@
+.profile-page {
+  grid-row: 2;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 100%;
+}
+
+.bio {
+  grid-column: 2;
+  box-sizing: border-box;
+  margin-top: 15vh;
+
+}
+
+.user-info {
+  box-sizing: border-box;
+  border: 1px solid black;
+  width: 40vw;
+  height: 20vh;
+  border-radius: 10px
+}
+
+.user-contact {
+  display: flex;
+  flex-direction: row;
+}
+
+.card-div {
+  grid-row: 1;
+  grid-column: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  box-sizing: border-box;
+  margin-top: 15vh;
+}
+
+.pc-container, .dm-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.pc-info, .dm-info {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  border: 1px solid black;
+  height: 500px;
+  width: 300px;
+  border-radius: 20px;
+  justify-content: space-between;
+  padding: 15px;
+}
+
+.title {
+  align-self: center;
+}
+
+/* .bard{
+  background: url('https://i.imgur.com/4h05f8H.png');
+  background-size: cover;
+}
+
+.barbarian{
+  background: url('https://i.imgur.com/0EbKuy6.png');
+  background-size: cover;
+}
+
+.cleric{
+  background: url('https://i.imgur.com/7ghr4ac.png');
+  background-size: cover;
+}
+
+.druid{
+  background: url('https://i.imgur.com/JS30cXn.png');
+  background-size: cover;
+}
+
+.fighter{
+  background: url('https://i.imgur.com/hucOS0r.png');
+  background-size: cover;
+}
+
+.monk {
+  background: url('https://i.imgur.com/ku9Agh4.png');
+  background-size: cover;
+}
+
+.paladin{
+  background: url('https://i.imgur.com/VsG24Vl.png');
+  background-size: cover;
+}
+
+.ranger {
+  background: url('https://i.imgur.com/px3glEu.png');
+  background-size: cover;
+}
+
+.rogue {
+  background: url('https://i.imgur.com/4CuRjrv.png');
+  background-size: cover;
+}
+
+.sorcerer{
+  background: url('https://i.imgur.com/2Lzn33d.png');
+  background-size: cover;
+}
+
+.warlock {
+  background: url('https://i.imgur.com/wZATeC5.png');
+  background-size: cover;
+}
+
+.wizard{
+  background: url('https://i.imgur.com/HvZqRq6.png');
+  background-size: cover;
+} */

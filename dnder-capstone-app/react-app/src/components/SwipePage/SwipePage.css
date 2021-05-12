@@ -17,8 +17,8 @@
 }
 
 .cardContainer {
-  max-width: 260px;
-  height: 300px;
+  max-width: 300px;
+  height: 500px;
   transform: translateX(-131px);
 }
 
@@ -27,14 +27,14 @@
 }
 
 #cardId {
-  width: 260px;
-  height: 300px;
+  width: 300px;
+  height: 500px;
   border: 1px solid black;
   border-radius: 20px;
   position: relative;
   /* background: url('../../images/sorcerer.png'); */
-  background-size: cover;
   background-color:grey;
+  background-repeat: no-repeat;
 }
 
 .cardInfo {
@@ -44,73 +44,85 @@
 }
 
 .bard{
-  background: url('../../images/bard.png');
+  background: url('https://i.imgur.com/4h05f8H.png');
   background-size: cover;
-  background-color: aliceblue;
 }
 
 .barbarian{
-  background: url('../../images/barbarian.png');
+  background: url('https://i.imgur.com/0EbKuy6.png');
   background-size: cover;
-  background-color: aliceblue;
 }
 
 .cleric{
-  background: url('../../images/cleric.png');
-  background-size: cover;
-  background-color: aliceblue;
+  background: url('https://i.imgur.com/7ghr4ac.png');
+  background-position: 70%;
+  background-repeat: no-repeat;
 }
 
 .druid{
-  background: url('../../images/druid.png');
-  background-size: cover;
-  background-color: aliceblue;
+  background: url('https://i.imgur.com/JS30cXn.png');
+  background-position: 40%;
 }
 
 .fighter{
-  background: url('../../images/fighter.png');
+  background: url('https://i.imgur.com/hucOS0r.png');
   background-size: cover;
-  background-color: aliceblue;
 }
 
 .monk {
-  background: url('../../images/monk.png');
+  background: url('https://i.imgur.com/ku9Agh4.png');
   background-size: cover;
-  background-color: aliceblue;
 }
 
 .paladin{
-  background: url('../../images/paladin.png');
+  background: url('https://i.imgur.com/VsG24Vl.png');
   background-size: cover;
-  background-color: aliceblue;
+  background-position: 30%;
 }
 
 .ranger {
-  background: url('../../images/ranger.png');
+  background: url('https://i.imgur.com/px3glEu.png');
   background-size: cover;
-  background-color: aliceblue;
+  background-position: 50%;
 }
 
 .rogue {
-  background: url('../../images/rogue.png');
+  background: url('https://i.imgur.com/4CuRjrv.png');
   background-size: cover;
-  background-color: aliceblue;
+  background-position: 80%;
 }
 
 .sorcerer{
-  background: url('../../images/sorcerer.png');
+  background: url('https://i.imgur.com/2Lzn33d.png');
   background-size: cover;
-  background-color: aliceblue;
+  background-position: 70%;
 }
 
 .warlock {
-  background: url('../../images/warlock.png');
-  background-size: cover;
-  background-color: aliceblue;
+  background: url('https://i.imgur.com/wZATeC5.png');
+  background-position: 80%;
 }
 
 .wizard{
-  background: url('../../images/wizard.png');
-  background-size: cover;
-  background-color: aliceblue;
+  background: url('https://i.imgur.com/HvZqRq6.png');
+  background-position: 50% 0%;
+  background-repeat: no-repeat;
+}
+
+.novice {
+  background: url('https://i.imgur.com/WIOFGhN.png');
+  background-size: 800px 500px;
+  background-repeat: no-repeat;
+  background-position: 50%;
+}
+
+.adept {
+  background: url('https://i.imgur.com/vxIsZAk.png');
+  background-size: 300px 600px;
+}
+
+.master {
+  background: url('https://i.imgur.com/jxKz8IN.png');
+  background-size: 600px 500px;
+  background-position: 60%;
 }
