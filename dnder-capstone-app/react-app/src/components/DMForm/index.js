@@ -14,10 +14,10 @@ const DMForm = () => {
   const [experience, setExperience] = useState(dunMas.experience || "");
   const [description, setDescription] = useState(dunMas.description || "");
 
-  let btn = <button type=" submit">Create DM</button>
+  let btn = <button className='sign-btn' type=" submit">Create DM</button>
 
   if(Object.keys(dunMas).length) {
-    btn = <button type=" submit">Edit DM</button>
+    btn = <button className='sign-btn' type=" submit">Edit DM</button>
   }
 
   const onCreateDM = (e) => {
@@ -67,62 +67,64 @@ const DMForm = () => {
   };
 
   return (
-    <form onSubmit={onCreateDM}>
-      <div>
-        <label>Which campaign will you run?</label>
-        <input
-        type="text"
-        name="campaign"
-        onChange={updateCampaign}
-        value={campaign}
-        ></input>
-      </div>
-      <div>
-        <label>Resources Used</label>
-        <input
-        type="text"
-        name="resources"
-        onChange={updateResources}
-        value={resources}
-        ></input>
-      </div>
-      <div>
-        <lable>Party Size</lable>
-        <select name="partySize" onChange={updatePartySize} value={partySize}>
-          <option value="">--party size--</option>
-          <option value="1-3">1-3</option>
-          <option value="4-6">4-6</option>
-          <option value="7+">7+</option>
-        </select>
-      </div>
-      <div>
-        <label>Group Type</label>
-        <select name="groupType" onChange={updateGroupType} value={groupType}>
-          <option value="">--group type--</option>
-          <option value="in-person">in-person</option>
-          <option value="remote">remote</option>
-        </select>
-      </div>
-      <div>
-        <label>Years of Experience</label>
-        <select name="experience" onChange={updateExperience} value={experience}>
-          <option value="">--experience range--</option>
-          <option value="0-1">0-1</option>
-          <option value="1-5">1-5</option>
-          <option value="5+">5+</option>
-        </select>
-      </div>
-      <div>
-        <label>Character Description</label>
-        <textarea
-        type="text"
-        name="description"
-        onChange={updateDescription}
-        value={description}
-        ></textarea>
-      </div>
-      {btn}
-    </form>
+    <div className='form-container'>
+      <form onSubmit={onCreateDM}>
+        <div>
+          <label>Which campaign will you run?</label>
+          <input
+          type="text"
+          name="campaign"
+          onChange={updateCampaign}
+          value={campaign}
+          ></input>
+        </div>
+        <div>
+          <label>Resources Used</label>
+          <input
+          type="text"
+          name="resources"
+          onChange={updateResources}
+          value={resources}
+          ></input>
+        </div>
+        <div>
+          <lable>Party Size</lable>
+          <select name="partySize" onChange={updatePartySize} value={partySize}>
+            <option value="">--party size--</option>
+            <option value="1-3">1-3</option>
+            <option value="4-6">4-6</option>
+            <option value="7+">7+</option>
+          </select>
+        </div>
+        <div>
+          <label>Group Type</label>
+          <select name="groupType" onChange={updateGroupType} value={groupType}>
+            <option value="">--group type--</option>
+            <option value="in-person">in-person</option>
+            <option value="remote">remote</option>
+          </select>
+        </div>
+        <div>
+          <label>Years of Experience</label>
+          <select name="experience" onChange={updateExperience} value={experience}>
+            <option value="">--experience range--</option>
+            <option value="novice">Novice</option>
+            <option value="adept">Adept</option>
+            <option value="master">Master</option>
+          </select>
+        </div>
+        <div>
+          <label>Character Description</label>
+          <textarea
+          type="text"
+          name="description"
+          onChange={updateDescription}
+          value={description}
+          ></textarea>
+        </div>
+        {btn}
+      </form>
+    </div>
   )
 }
 

@@ -1,0 +1,11 @@
+.log {
+  border: none;
+  background: none;
+  font-size: 34px;
+  color: white;
+  font-family: 'Merienda', cursive;
+}
+
+.log:hover {
+  color: darkred;
+}

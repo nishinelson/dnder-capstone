@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { logout } from "../../store/session";
 import { clearDM } from "../../store/dm";
 import { clearPC } from "../../store/pc";
+import './LogoutButton.css'
 
 const LogoutButton = () => {
   const dispatch = useDispatch();
@@ -12,7 +13,7 @@ const LogoutButton = () => {
     dispatch(clearPC());
   };
 
-  return <button onClick={onLogout}>Logout</button>;
+  return <button className='log' onClick={onLogout}>Logout</button>;
 };
 
 export default LogoutButton;
