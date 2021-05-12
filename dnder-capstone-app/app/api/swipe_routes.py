@@ -1,6 +1,6 @@
 from flask import Blueprint, request
 from flask_login import current_user, login_user, logout_user, login_required
-from app.models import db, PC, DM, User
+from app.models import db, PC, DM, User, Match
 from sqlalchemy import and_
 
 swipe_routes = Blueprint('swipe', __name__)
@@ -10,6 +10,8 @@ swipe_routes = Blueprint('swipe', __name__)
 def getLocalPCs():
   id = current_user.id
   pcList = PC.query.join(User).filter(and_(PC.userId != id, PC.groupType == 'in-person')).filter(User.city == current_user.city, User.state == current_user.state).all()
+  # pcList = PC.query.join(User).join(Match).filter(and_(PC.userId != id, PC.groupType == 'in-person')).filter(User.city == current_user.city, User.state == current_user.state).filter(and_(Match.dmId != current_user.dm.id, Match.dmSwipeBool != True)).all()
+  print(pcList, "===========================================")
   lst = [pc.to_dict() for pc in pcList]
   return {"swipes": lst}
 
