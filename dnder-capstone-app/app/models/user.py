@@ -39,7 +39,7 @@ class User(db.Model, UserMixin):
       "email": self.email,
       "city": self.city,
       "state": self.state,
-      "bio": self.bio
+      "bio": self.bio,
     }
 
 
@@ -71,7 +71,7 @@ class PC(db.Model):
   userId = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
   user = db.relationship('User', back_populates='pc')
   dms = db.relationship("DM", secondary=party, back_populates="pcs")
-  pcSwipe = db.relationship("Match", back_populates='pcMatch')
+  pcSwipe = db.relationship("Match", cascade="all,delete", back_populates='pcMatch')
 
   def to_dict(self):
     return {
@@ -81,8 +81,8 @@ class PC(db.Model):
       "description": self.description,
       "groupType": self.groupType,
       "userId": self.userId,
-      "user": self.user.to_dict()
-      # 'user': [person.to_dict() for person in user]
+      "user": self.user.to_dict(),
+      "pcSwipe": [swipe.to_dict() for swipe in self.pcSwipe]
     }
 
 
@@ -99,7 +99,7 @@ class DM(db.Model):
   userId = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
   user = db.relationship('User', back_populates='dm')
   pcs = db.relationship("PC", secondary=party, back_populates="dms")
-  dmSwipe = db.relationship("Match", back_populates="dmMatch")
+  dmSwipe = db.relationship("Match", cascade="all,delete", back_populates="dmMatch")
 
   def to_dict(self):
     return {
@@ -111,7 +111,8 @@ class DM(db.Model):
       "groupType": self.groupType,
       "description": self.description,
       "userId": self.userId,
-      "user": self.user.to_dict()
+      "user": self.user.to_dict(),
+      "dmSwipe": [swipe.to_dict() for swipe in self.dmSwipe]
      }
 
 
@@ -129,3 +130,12 @@ class Match(db.Model):
 
   pcMatch = db.relationship('PC', back_populates='pcSwipe')
   dmMatch = db.relationship('DM', back_populates='dmSwipe')
+
+  def to_dict(self):
+    return {
+      "id": self.id,
+      "pcId": self.pcId,
+      "dmId": self.dmId,
+      "dmSwipeBool": self.dmSwipeBool,
+      "pcSwipeBool": self.pcSwipeBool
+    }
