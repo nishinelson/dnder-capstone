@@ -10,6 +10,7 @@ swipe_routes = Blueprint('swipe', __name__)
 def getLocalPCs():
   id = current_user.id
   pcList = PC.query.join(User).filter(and_(PC.userId != id, PC.groupType == 'in-person')).filter(User.city == current_user.city, User.state == current_user.state).all()
+  # try one less join
   # pcList = PC.query.join(User).join(Match).filter(and_(PC.userId != id, PC.groupType == 'in-person')).filter(User.city == current_user.city, User.state == current_user.state).filter(and_(Match.dmId != current_user.dm.id, Match.dmSwipeBool != True)).all()
   print(pcList, "===========================================")
   lst = [pc.to_dict() for pc in pcList]
