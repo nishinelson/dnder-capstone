@@ -39,9 +39,7 @@ class User(db.Model, UserMixin):
       "email": self.email,
       "city": self.city,
       "state": self.state,
-      "bio": self.bio,
-      "dmId": self.dm.id,
-      "pcId": self.pc.id
+      "bio": self.bio
     }
 
 

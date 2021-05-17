@@ -8,7 +8,6 @@ const addMatch = (match) => {
 }
 
 export const addSwipeRight = (data) => async (dispatch) => {
-  console.log(data, "OOOOOOOOOOOOOOOOOOOOOOOOOO")
   let response = await fetch("/api/match", {
     method: "POST",
     headers: {

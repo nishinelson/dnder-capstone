@@ -26,7 +26,6 @@ export const deletePC = () => async (dispatch) => {
 export const getPC = () => async (dispatch) => {
   let pcData = await fetch("/api/PC");
   let pc = await pcData.json();
-  console.log(pc, "THIS IS IN THE GETPC THUNK")
   if(pc){
     dispatch(setPC(pc));
     return;
@@ -46,7 +45,6 @@ export const addPC = (pc) => async (dispatch) => {
     body: JSON.stringify(pc)
   })
   let newPC = await response.json()
-  console.log(newPC, "THIS IS IN THE ADDPC THUNK")
   if(newPC){
     dispatch(setPC(newPC))
     return
@@ -62,7 +60,6 @@ export const editPC = (pc) => async (dispatch) => {
     body: JSON.stringify(pc)
   })
   let newPC = await response.json()
-  console.log(newPC, "THIS IS IN THE EDITPC THUNK")
   if(newPC){
     dispatch(setPC(newPC))
     return

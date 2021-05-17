@@ -26,7 +26,6 @@ export const deleteDM = () => async (dispatch) => {
 export const getDM = () => async (dispatch) => {
   let dmData = await fetch("/api/DM");
   let dm = await dmData.json();
-  console.log(dm, "THIS IS IN THE GETDM THUNK")
   if(dm){
     dispatch(setDM(dm));
     return;
@@ -46,7 +45,6 @@ export const addDM = (dm) => async (dispatch) => {
     body: JSON.stringify(dm)
   })
   let newDM = await response.json()
-  console.log(newDM, "THIS IS IN THE ADDDM THUNK")
   if(newDM){
     dispatch(setDM(newDM))
     return
