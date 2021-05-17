@@ -4,10 +4,9 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useParams } from 'react-router-dom';
 import { setLocalPCSwipes, setRemotePCSwipes, setLocalDMSwipes, setRemoteDMSwipes } from '../../store/swipe'
 import { addSwipeRight } from '../../store/match'
-import { getPC, deletePC } from "../../store/pc"
-import { getDM, deleteDM } from "../../store/dm"
+import { getPC } from "../../store/pc"
+import { getDM } from "../../store/dm"
 import './SwipePage.css'
-import pc from '../../store/pc';
 
 
 function SwipePage () {
@@ -20,10 +19,6 @@ function SwipePage () {
   const [dmSwipe, setDMSwipe] = useState(false)
   const { card, location } = useParams();
 
-  // let cards;
-  // if(cardsArr) {
-  //   cards = cardsArr.filter(card => card.dmId !== userDM.id && card.dm)
-  // }
 
   useEffect(()=> {
     dispatch(getPC());
@@ -46,11 +41,7 @@ function SwipePage () {
     }
   }, [])
 
-  console.log(pcSwipe, dmSwipe, "TTTTTTTTTTTTTTTTTTTTTTTTTT")
-
   const swiped = (direction, cardId) => {
-    // console.log('removing: ' + nameToDelete)
-    console.log(direction, "==========================")
     setLastDirection(direction)
 
     if(direction === 'right'){
@@ -76,10 +67,6 @@ function SwipePage () {
     }
 
   }
-
-  // const outOfFrame = (name) => {
-  //   console.log(name + ' left the screen!')
-  // }onCardLeftScreen={() => outOfFrame(card.user.firstName)}
 
   return (
     <div className='pageRoot'>
