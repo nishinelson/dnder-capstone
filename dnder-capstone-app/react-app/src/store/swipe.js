@@ -48,6 +48,8 @@ const initialState = {};
 export default function swipe(state = initialState, action) {
   switch(action.type) {
     case SET_SWIPE_PCS:
+      let thing = action.payload['swipes']
+      console.log(thing, "HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH")
       return { ...state, ...action.payload}
     default:
       return state;
