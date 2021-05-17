@@ -1,4 +1,5 @@
 from flask import Blueprint, request
+from flask.globals import session
 from flask_login import current_user, login_user, logout_user, login_required
 from app.models import db, PC, DM, User, Match
 from sqlalchemy import and_
@@ -9,12 +10,13 @@ swipe_routes = Blueprint('swipe', __name__)
 @login_required
 def getLocalPCs():
   id = current_user.id
+  swipeExist = PC.query.join(User).join(Match).filter(and_(PC.userId != id, PC.groupType == 'in-person')).filter(User.city == current_user.city, User.state == current_user.state).filter(Match.dmId == current_user.dm.id, Match.dmSwipeBool == True).all()
   pcList = PC.query.join(User).filter(and_(PC.userId != id, PC.groupType == 'in-person')).filter(User.city == current_user.city, User.state == current_user.state).all()
-  # try one less join
-  # pcList = PC.query.join(User).join(Match).filter(and_(PC.userId != id, PC.groupType == 'in-person')).filter(User.city == current_user.city, User.state == current_user.state).filter(and_(Match.dmId != current_user.dm.id, Match.dmSwipeBool != True)).all()
-  print(pcList, "===========================================")
+  pcIdDict = {card.id: card for card in pcList}
+  swipeIdDict = {card.id: card for card in swipeExist}
+  filtCards = [val.to_dict() for val in pcIdDict.values() if val.id not in swipeIdDict.keys()]
   lst = [pc.to_dict() for pc in pcList]
-  return {"swipes": lst}
+  return {"swipes": filtCards}
 
 
 @swipe_routes.route('/pc/remote')
