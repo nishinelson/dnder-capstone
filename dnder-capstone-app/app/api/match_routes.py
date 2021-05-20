@@ -47,3 +47,5 @@ def setSwipe():
 
   matches = Match.query.filter(Match.dmId == request.get_json()['dmId'], Match.pcId == request.get_json()['pcId']).filter(Match.dmSwipeBool == True, Match.pcSwipeBool == True).all()
   return {'matches': matches}
+
+# checkout route and make sure all logic is appropriate
