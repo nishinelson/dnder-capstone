@@ -39,3 +39,11 @@ def setSwipe():
       db.session.add(new_match)
       db.session.commit()
       return new_match.to_dict()
+
+
+@match_routes.route('', methods=['GET'])
+@login_required
+def setSwipe():
+
+  matches = Match.query.filter(Match.dmId == request.get_json()['dmId'], Match.pcId == request.get_json()['pcId']).filter(Match.dmSwipeBool == True, Match.pcSwipeBool == True).all()
+  return {'matches': matches}

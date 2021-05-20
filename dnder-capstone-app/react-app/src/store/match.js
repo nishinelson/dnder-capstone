@@ -1,4 +1,12 @@
 const ADD_MATCH  = "match/ADD_MATCH";
+const GET_MATCHES = "match/GET_MATCHES"
+
+const getMatches = (matches) => {
+  return {
+    type: GET_MATCHES,
+    payload: matches
+  }
+}
 
 const addMatch = (match) => {
   return {
@@ -6,6 +14,8 @@ const addMatch = (match) => {
     payload: match
   }
 }
+
+export const getUserMatches
 
 export const addSwipeRight = (data) => async (dispatch) => {
   let response = await fetch("/api/match", {
