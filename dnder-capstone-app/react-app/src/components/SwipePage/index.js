@@ -19,6 +19,7 @@ function SwipePage () {
   const [dmSwipe, setDMSwipe] = useState(false)
   const { card, location } = useParams();
 
+  // figure out where to call new thunk to grab the updated info
 
   useEffect(()=> {
     dispatch(getPC());
