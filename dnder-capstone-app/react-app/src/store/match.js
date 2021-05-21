@@ -15,7 +15,7 @@ const addMatch = (match) => {
   }
 }
 
-export const getUserMatches
+// export const getUserMatches
 // add rest of thunk
 
 export const addSwipeRight = (data) => async (dispatch) => {

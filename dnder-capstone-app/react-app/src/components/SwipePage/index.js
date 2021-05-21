@@ -18,7 +18,7 @@ function SwipePage () {
   const [pcSwipe, setPCSwipe] = useState(false)
   const [dmSwipe, setDMSwipe] = useState(false)
   const { card, location } = useParams();
-
+  let count = 0;
   // figure out where to call new thunk to grab the updated info
 
   useEffect(()=> {
@@ -40,7 +40,9 @@ function SwipePage () {
       setPCSwipe(true);
       dispatch(setRemoteDMSwipes());
     }
-  }, [])
+  }, [count])
+
+  console.log(count, "HHHHHHHHHHHHHHHHHHHHHHHHHHHH")
 
   const swiped = (direction, cardId) => {
     setLastDirection(direction)
@@ -54,6 +56,7 @@ function SwipePage () {
           pcBool: pcSwipe
         }
         dispatch(addSwipeRight(data))
+        count++
       }
 
       if(dmSwipe){
@@ -64,6 +67,7 @@ function SwipePage () {
           pcBool: pcSwipe
         }
         dispatch(addSwipeRight(data))
+        count++
       }
     }
 
