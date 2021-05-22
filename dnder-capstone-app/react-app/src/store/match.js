@@ -31,7 +31,7 @@ export const addSwipeRight = (data) => async (dispatch) => {
   }
   let matchData = await response.json();
   dispatch(addMatch(matchData));
-  return
+  return matchData
 }
 
 const initialState = {};
