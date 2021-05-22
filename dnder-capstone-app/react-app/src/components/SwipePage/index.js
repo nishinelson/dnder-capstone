@@ -17,8 +17,9 @@ function SwipePage () {
   const [lastDirection, setLastDirection] = useState("")
   const [pcSwipe, setPCSwipe] = useState(false)
   const [dmSwipe, setDMSwipe] = useState(false)
+  // const [count, setCount] = useState(0)
   const { card, location } = useParams();
-  let count = 0;
+
   // figure out where to call new thunk to grab the updated info
 
   useEffect(()=> {
@@ -40,34 +41,68 @@ function SwipePage () {
       setPCSwipe(true);
       dispatch(setRemoteDMSwipes());
     }
-  }, [count])
+  },[])
 
-  console.log(count, "HHHHHHHHHHHHHHHHHHHHHHHHHHHH")
+  console.log(dmSwipe, pcSwipe, "initial page load")
 
-  const swiped = (direction, cardId) => {
+  // console.log(count, "HHHHHHHHHHHHHHHHHHHHHHHHHHHH")
+
+  const swiped = async(direction, cardId) => {
     setLastDirection(direction)
+    let dm;
+    let pc;
+
+    if(card === 'dm' && location === 'local'){
+      pc = true;
+    }
+    if(card === 'dm' && location === 'remote'){
+      pc = true;
+    }
+    if(card === 'pc' && location === 'local'){
+      dm = true;
+    }
+    if(card === 'pc' && location === 'remote'){
+      dm = true;
+    }
+
+    console.log(direction, dm, pc, card, location, "------------------------------")
 
     if(direction === 'right'){
-      if(pcSwipe){
+      console.log(dm, pc, "first if OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
+      if(pc){
         const data = {
           pcId: userPC.id,
           dmId: cardId,
           dmBool: dmSwipe,
           pcBool: pcSwipe
+        };
+        await dispatch(addSwipeRight(data));
+        if(card === 'dm' && location === 'local'){
+          await dispatch(setLocalDMSwipes());
         }
-        dispatch(addSwipeRight(data))
-        count++
+        if(card === 'dm' && location === 'remote'){
+          await dispatch(setRemoteDMSwipes());
+        }
+        // setCount(count+1);
+        console.log("SUCCESS!!!==========================")
       }
 
-      if(dmSwipe){
+      if(dm){
         const data = {
           pcId: cardId,
           dmId: userDM.id,
           dmBool: dmSwipe,
           pcBool: pcSwipe
+        };
+        await dispatch(addSwipeRight(data));
+        if(card === 'pc' && location === 'local'){
+          await dispatch(setLocalPCSwipes());
         }
-        dispatch(addSwipeRight(data))
-        count++
+        if(card === 'pc' && location === 'remote'){
+          await dispatch(setRemotePCSwipes());
+        }
+        // setCount(count+1);
+        console.log("SUCCESS!!!==========================")
       }
     }
 
@@ -79,7 +114,7 @@ function SwipePage () {
         <h1>Search for players!</h1>
         <div className='cardContainer'>
           {cards?.map((card) =>
-            <TinderCard className='swipe' key={card.id} onSwipe={(dir) => swiped(dir, card.id)}>
+            <TinderCard className='swipe' key={card.id} onSwipe={(dir) => swiped(dir, card.id, dmSwipe, pcSwipe)}>
               <div id="cardId" className={`card ${card.pcClass} ${card.experience}`}>
                 <div className='cardInfo'>
                   <h3>{card.user.firstName}</h3>
