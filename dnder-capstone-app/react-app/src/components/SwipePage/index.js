@@ -73,8 +73,8 @@ function SwipePage () {
         const data = {
           pcId: userPC.id,
           dmId: cardId,
-          dmBool: dmSwipe,
-          pcBool: pcSwipe
+          dmBool: false,
+          pcBool: true
         };
         await dispatch(addSwipeRight(data));
         if(card === 'dm' && location === 'local'){
@@ -91,8 +91,8 @@ function SwipePage () {
         const data = {
           pcId: cardId,
           dmId: userDM.id,
-          dmBool: dmSwipe,
-          pcBool: pcSwipe
+          dmBool: true,
+          pcBool: false
         };
         await dispatch(addSwipeRight(data));
         if(card === 'pc' && location === 'local'){
