@@ -38,7 +38,6 @@ const DMForm = () => {
     }
 
     dispatch(addDM(data))
-    console.log(data, "CREATEPC WAS RUN")
     history.push("/profiles/me");
   };
 
@@ -88,7 +87,7 @@ const DMForm = () => {
           ></input>
         </div>
         <div>
-          <lable>Party Size</lable>
+          <label>Party Size</label>
           <select name="partySize" onChange={updatePartySize} value={partySize}>
             <option value="">--party size--</option>
             <option value="1-3">1-3</option>

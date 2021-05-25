@@ -30,6 +30,8 @@ const ProfilePage = () => {
 
   let pcRender;
   let dmRender;
+  let dmSearch;
+  let pcSearch;
 
   const deletePCcard = () => {
     dispatch(deletePC())
@@ -39,13 +41,23 @@ const ProfilePage = () => {
     dispatch(deleteDM())
   }
 
+  if(dunMas.groupType === "remote"){
+    dmSearch = <NavLink to="/swipe/pc/remote">Swipe for Players!</NavLink>
+  } else {
+    dmSearch = <NavLink to="/swipe/pc/local">Swipe for Players!</NavLink>
+  }
+
+  if(char.groupType === "remote"){
+    pcSearch = <NavLink to="/swipe/dm/remote">Swipe for DMs!</NavLink>
+  } else {
+    pcSearch = <NavLink to="/swipe/dm/local">Swipe for DMs!</NavLink>
+  }
+
   if(Object.keys(char).length) {
     pcRender = (
       <div className='pc-container'>
-        <div>Swipe for DMs!</div>
         <div>
-          <NavLink to="/swipe/dm/local">In-person</NavLink>
-          <NavLink to="/swipe/dm/remote">Remote</NavLink>
+          {pcSearch}
         </div>
         <div className={`pc-info ${char.pcClass}`} >
           <div className='title'>Player Character Card</div>
@@ -73,10 +85,8 @@ const ProfilePage = () => {
   if(Object.keys(dunMas).length) {
     dmRender = (
       <div className='dm-container'>
-        <div>Swipe for Players!</div>
         <div>
-          <NavLink to="/swipe/pc/local">In-person</NavLink>
-          <NavLink to="/swipe/pc/remote">Remote</NavLink>
+          {dmSearch}
         </div>
         <div className={`dm-info ${dunMas.experience}`}>
           <div className='title'>Dungeon Master Card</div>

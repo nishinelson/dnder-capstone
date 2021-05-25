@@ -11,9 +11,29 @@
   font-size: 52px;
   color: darkred;
 }
+.splashInfo {
+  font-size: 35px;
+  width: 70vw;
+  display: flex;
+  text-align: center;
+}
 
 .splashMessage {
   font-size: 42px;
+}
+
+.sign-demo {
+  display: flex;
+  flex-direction: column;
+}
+
+.demo-btn {
+  font-size: 30px;
+  text-decoration: none;
+  color: white;
+  border: none;
+  background: none;
+  font-family: 'Merienda', cursive;
 }
 
 .signUp {
@@ -22,6 +42,6 @@
   color: white;
 }
 
-.signUp:hover {
+.signUp:hover, .demo-btn:hover {
   color: darkred;
 }
