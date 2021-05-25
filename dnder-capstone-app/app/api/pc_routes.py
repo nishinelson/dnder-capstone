@@ -38,6 +38,7 @@ def editPC():
   pc.pcClass = request.get_json()['pcClass']
   pc.experience = request.get_json()['experience']
   pc.description = request.get_json()['description']
+  pc.groupType = request.get_json()['groupType']
   pc.userId = id
   db.session.commit()
   return pc.to_dict()
