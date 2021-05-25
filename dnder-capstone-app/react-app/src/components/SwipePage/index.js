@@ -17,10 +17,8 @@ function SwipePage () {
   const [lastDirection, setLastDirection] = useState("")
   const [pcSwipe, setPCSwipe] = useState(false)
   const [dmSwipe, setDMSwipe] = useState(false)
-  // const [count, setCount] = useState(0)
   const { card, location } = useParams();
 
-  // figure out where to call new thunk to grab the updated info
 
   useEffect(()=> {
     dispatch(getPC());
@@ -43,9 +41,6 @@ function SwipePage () {
     }
   },[])
 
-  console.log(dmSwipe, pcSwipe, "initial page load")
-
-  // console.log(count, "HHHHHHHHHHHHHHHHHHHHHHHHHHHH")
 
   const swiped = async(direction, cardId) => {
     setLastDirection(direction)
@@ -65,10 +60,8 @@ function SwipePage () {
       dm = true;
     }
 
-    console.log(direction, dm, pc, card, location, "------------------------------")
 
     if(direction === 'right'){
-      console.log(dm, pc, "first if OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
       if(pc){
         const data = {
           pcId: userPC.id,
@@ -83,8 +76,6 @@ function SwipePage () {
         if(card === 'dm' && location === 'remote'){
           await dispatch(setRemoteDMSwipes());
         }
-        // setCount(count+1);
-        console.log("SUCCESS!!!==========================")
       }
 
       if(dm){
@@ -101,8 +92,6 @@ function SwipePage () {
         if(card === 'pc' && location === 'remote'){
           await dispatch(setRemotePCSwipes());
         }
-        // setCount(count+1);
-        console.log("SUCCESS!!!==========================")
       }
     }
 

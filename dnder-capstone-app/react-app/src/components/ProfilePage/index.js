@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux"
 import { NavLink } from "react-router-dom"
 import { getPC, deletePC } from "../../store/pc"
 import { getDM, deleteDM } from "../../store/dm"
+import { getDMmatches, getPCmatches } from "../../store/match"
 import './ProfilePage.css'
 
 const ProfilePage = () => {
@@ -16,6 +17,16 @@ const ProfilePage = () => {
 
   const char = useSelector((state) => state?.pc);
   const dunMas = useSelector((state) => state?.dm);
+
+  useEffect(() =>{
+    if(Object.values(dunMas).length){
+      dispatch(getDMmatches());
+    }
+
+    if(Object.values(char).length){
+      dispatch(getPCmatches());
+    }
+  })
 
   let pcRender;
   let dmRender;

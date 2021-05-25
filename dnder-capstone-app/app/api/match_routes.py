@@ -41,11 +41,19 @@ def setSwipe():
       return new_match.to_dict()
 
 
-# @match_routes.route('', methods=['GET'])
-# @login_required
-# def setSwipe():
+@match_routes.route('/dmMatches')
+@login_required
+def setMatchesDM():
+  matchesDM = PC.query.join(Match).filter(Match.dmId == current_user.dm.id).filter(Match.dmSwipeBool == True, Match.pcSwipeBool == True).all()
+  dms = [card.to_dict() for card in matchesDM]
+  return {'DMmatches': dms}
 
-#   matches = Match.query.filter(Match.dmId == request.get_json()['dmId'], Match.pcId == request.get_json()['pcId']).filter(Match.dmSwipeBool == True, Match.pcSwipeBool == True).all()
-#   return {'matches': matches}
+
+@match_routes.route('/pcMatches')
+@login_required
+def setMatchesPC():
+  matchesPC = DM.query.join(Match).filter(Match.pcId == current_user.pc.id).filter(Match.dmSwipeBool == True, Match.pcSwipeBool == True).all()
+  pcs = [card.to_dict() for card in matchesPC]
+  return {'PCmatches': pcs}
 
 # checkout route and make sure all logic is appropriate
