@@ -62,9 +62,9 @@ const ProfilePage = () => {
         <div id="pcCard" className={`pc-info ${char.pcClass}`} >
           <div className='title'>Player Character Card</div>
           <div className="card-text">
-            <div>Class: {char.pcClass}</div>
-            <div>Experience: {char.experience} years</div>
-            <div>Group Type: {char.groupType}</div>
+            <div><b>Class:</b> {char.pcClass}</div>
+            <div><b>Experience:</b> {char.experience} years</div>
+            <div><b>Group Type:</b> {char.groupType}</div>
             <div className="description">Description: {char.description}</div>
           </div>
         </div>
@@ -91,12 +91,12 @@ const ProfilePage = () => {
         <div className={`dm-info ${dunMas.experience}`}>
           <div className='title'>Dungeon Master Card</div>
           <div className="card-text">
-            <div>Campaign: {dunMas.campaign}</div>
-            <div>Resources: {dunMas.resources}</div>
-            <div>Experience: {dunMas.experience}</div>
-            <div>Party Size: {dunMas.partySize} people</div>
-            <div>Group Type: {dunMas.groupType}</div>
-            <div className="description">Description: {dunMas.description}</div>
+            <div><b>Campaign:</b> {dunMas.campaign}</div>
+            <div><b>Resources:</b> {dunMas.resources}</div>
+            <div><b>Experience:</b> {dunMas.experience}</div>
+            <div><b>Party Size:</b> {dunMas.partySize} people</div>
+            <div><b>Group Type:</b> {dunMas.groupType}</div>
+            <div className="description"><b>Description:</b> {dunMas.description}</div>
           </div>
         </div>
         <div>
@@ -119,11 +119,11 @@ const ProfilePage = () => {
       <div className='bio'>
         <div className="username">{user.firstName}'s Profile Page</div>
         <div className='user-info'>
-          <div className='user-contact'>
-            <div>Location: {user.city}, {user.state}</div>
-            <div>Contact Info: {user.email}</div>
-          </div>
-          <div>Bio: {user.bio}</div>
+          <div className="location-div"><b>Location:</b> {user.city}, {user.state}</div>
+          <div className="contact-div"><b>Contact Info:</b> {user.email}</div>
+          {/* <div className='user-contact'>
+          </div> */}
+          <div className="bio-div"><b>Bio:</b> {user.bio}</div>
         </div>
       </div>
       <div className='card-div'>

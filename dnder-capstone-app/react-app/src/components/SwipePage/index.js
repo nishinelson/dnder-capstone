@@ -107,8 +107,12 @@ function SwipePage () {
               <div id="cardId" className={`card ${card.pcClass} ${card.experience}`}>
                 <div className='cardInfo'>
                   <h3>{card.user.firstName}</h3>
-                  <div>{card.pcClass}</div>
-                  <div>{card.description}</div>
+                  <div><b>Class:</b>{card.pcClass}</div>
+                  <div><b></b>{card.campaign}</div>
+                  <div><b></b>{card.resources}</div>
+                  <div><b></b>{card.partySize}</div>
+                  <div><b></b>{card.experience}</div>
+                  <div><b></b>{card.description}</div>
                 </div>
               </div>
             </TinderCard>

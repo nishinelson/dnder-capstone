@@ -14,7 +14,7 @@ const Splash = () => {
 
   return (
     <div className='splashContainer'>
-      <div className='splashWelcome'>Welcom to dnder!</div>
+      <div className='splashWelcome'>Welcome to dnder!</div>
       <div className='splashInfo'>Create a player and/or dungeon master card and swipe through other
         user's cards in order to match with people you'd like to play Dungeons and Dragons with.
       </div>
