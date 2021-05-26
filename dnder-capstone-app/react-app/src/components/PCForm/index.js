@@ -94,9 +94,9 @@ const PCForm = () => {
           value={description}
           ></textarea>
         </div>
-        <div>
+        <div className="group-type">
           <label>Group Type</label>
-          <select name="groupType" onChange={updateGroupType} value={groupType}>
+          <select className="group-sel" name="groupType" onChange={updateGroupType} value={groupType}>
             <option value="">--in-person or remote?--</option>
             <option value="in-person">in-person</option>
             <option value="remote">remote</option>

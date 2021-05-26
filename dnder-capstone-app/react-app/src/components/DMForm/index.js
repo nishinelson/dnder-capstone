@@ -86,7 +86,7 @@ const DMForm = () => {
           value={resources}
           ></input>
         </div>
-        <div>
+        <div className="group-type">
           <label>Party Size</label>
           <select name="partySize" onChange={updatePartySize} value={partySize}>
             <option value="">--party size--</option>
@@ -95,7 +95,7 @@ const DMForm = () => {
             <option value="7+">7+</option>
           </select>
         </div>
-        <div>
+        <div className="group-type">
           <label>Group Type</label>
           <select name="groupType" onChange={updateGroupType} value={groupType}>
             <option value="">--group type--</option>
