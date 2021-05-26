@@ -12,12 +12,20 @@
 
 }
 
+.username {
+  font-size: 24px;
+  color: darkred;
+}
+
 .user-info {
   box-sizing: border-box;
-  border: 1px solid black;
   width: 40vw;
   height: 20vh;
-  border-radius: 10px
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  background-color: rgba(247, 247, 233, 0.6);
+  font-size: 20px;
+  padding: 15px;
 }
 
 .user-contact {
@@ -46,14 +54,58 @@
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  border: 1px solid black;
   height: 500px;
   width: 300px;
-  border-radius: 20px;
+  border-radius: 10px;
   justify-content: space-between;
   padding: 15px;
+  box-shadow: 2px 2px 4px 4px rgba(0, 0, 0, 0.2);
+  color: black;
+  border: solid 5px black;
+}
+
+#pcCard {
+  background-color: rgba(255, 229, 180, 0.6);
 }
 
 .title {
   align-self: center;
+  background-color: rgba(223, 221, 219, 0.7);
+  font-size: 20px;
+  padding: 5px;
+}
+
+.card-text {
+  border-top: solid 1px black;
+  height: 40%;
+  overflow-y: scroll;
+  background-color: rgba(223, 221, 219, 0.7);
+  padding: 5px;
+}
+
+.description {
+  overflow-y: scroll;
+}
+
+::-webkit-scrollbar {
+  display: none;
+  }
+
+.card-btns {
+  text-decoration: none;
+  color: darkred;
+  font-size: 24px;
+}
+
+.del-btns{
+  font-size: 24px;
+  text-decoration: none;
+  color: darkred;
+  border: none;
+  background: none;
+  font-family: 'Merienda', cursive;
+}
+
+.card-btns:hover, .del-btns:hover {
+  color: white;
 }

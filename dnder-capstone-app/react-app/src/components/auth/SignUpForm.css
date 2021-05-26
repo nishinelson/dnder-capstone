@@ -9,14 +9,31 @@ form {
   justify-content: center;
   text-align: center;
   flex-direction: column;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   width: 300px;
   align-self: center;
   box-sizing: border-box;
-  margin-top: 20vh;
+  /* margin-top: 20vh; */
   padding: 15px;
   border-radius: 5px;
-  background-color: rgba(247, 247, 233, 0.4);
+  background-color: rgba(247, 247, 233, 0.6);
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.group-type {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+textarea {
+  width: 150px;
+  height: 100px;
+}
+
+.group-sel {
+  width: 150px;
 }
 
 .sign-btn {
