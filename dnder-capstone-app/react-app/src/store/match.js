@@ -1,5 +1,6 @@
 const ADD_MATCH  = "match/ADD_MATCH";
 const GET_MATCHES = "match/GET_MATCHES"
+const RESET_MATCH = "match/RESET_MATCH"
 
 const getMatches = (matches) => {
   return {
@@ -15,7 +16,16 @@ const addMatch = (match) => {
   }
 }
 
-// add rest of thunk
+const resetMatch = () => {
+  return {
+    type: RESET_MATCH
+  }
+}
+
+
+export const clearMatch = () => async(dispatch) => {
+  dispatch(resetMatch())
+}
 
 export const getDMmatches = () => async (dispatch) => {
   let response = await fetch("/api/match/dmMatches")
@@ -61,6 +71,8 @@ export default function match(state = initialState, action) {
       return {...state, ...action.payload}
     case ADD_MATCH:
       return { ...state, ...action.payload};
+      case RESET_MATCH:
+        return {}
     default:
       return state;
   }
