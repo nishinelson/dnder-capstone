@@ -125,6 +125,7 @@ const ProfilePage = () => {
           </div> */}
           <div className="bio-div"><b>Bio:</b> {user.bio}</div>
         </div>
+        <NavLink className="card-btns" to="/sign-up">Edit</NavLink>
       </div>
       <div className='card-div'>
         {pcRender}

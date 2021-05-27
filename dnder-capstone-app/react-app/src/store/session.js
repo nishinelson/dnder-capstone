@@ -83,11 +83,33 @@ export const signUp = (firstName, lastName, email, city, state, bio, password) =
     return {}
 }
 
-// reducer
+export const editUser = (firstName, lastName, email, city, state, bio, password) => async (dispatch)=> {
+    const response = await fetch("/api/auth/edit", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            firstName,
+            lastName,
+            email,
+            city,
+            state,
+            bio,
+            password,
+        }),
+    });
+    const data = await response.json();
+    if (data.errors) {
+        return data;
+    }
+    dispatch(setUser(data));
+    return {}
+}
+
 
 const initialState = { user: null };
 
-// useSelector(state => state.session.user)
 
 export default function reducer(state = initialState, action) {
     switch (action.type) {

@@ -149,7 +149,7 @@ function SwipePage () {
             </TinderCard>
           )}
         </div>
-        {lastDirection ? <h2 className='infoText'>You swiped {lastDirection}</h2> : <h2 className='infoText' />}
+        {lastDirection ? <h2 className='infoText'>You swiped {lastDirection}</h2> : <h2 className='infoText'>Click and drag card to swipe!</h2>}
       </div>
     </div>
   )
