@@ -65,7 +65,7 @@ const ProfilePage = () => {
             <div><b>Class:</b> {char.pcClass}</div>
             <div><b>Experience:</b> {char.experience} years</div>
             <div><b>Group Type:</b> {char.groupType}</div>
-            <div className="description">Description: {char.description}</div>
+            <div className="description"><b>Description:</b> {char.description}</div>
           </div>
         </div>
         <div>

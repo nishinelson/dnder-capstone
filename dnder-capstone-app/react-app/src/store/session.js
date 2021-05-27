@@ -76,7 +76,11 @@ export const signUp = (firstName, lastName, email, city, state, bio, password) =
         }),
     });
     const data = await response.json();
+    if (data.errors) {
+        return data;
+    }
     dispatch(setUser(data));
+    return {}
 }
 
 // reducer
