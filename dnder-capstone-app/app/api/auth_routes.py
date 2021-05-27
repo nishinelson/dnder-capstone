@@ -79,6 +79,23 @@ def sign_up():
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
+@auth_routes.route('/edit', methods=['POST'])
+@login_required
+def edit_user():
+    id = current_user.id
+    user = User.query.filter(User.id == id).first()
+    user.firstName = request.get_json()['firstName']
+    user.lastName = request.get_json()['lastName']
+    user.email = request.get_json()['email']
+    user.city = request.get_json()['city']
+    user.state = request.get_json()['state']
+    user.bio = request.get_json()['bio']
+    if request.get_json()['password']:
+        user.password = request.get_json()['password']
+    db.session.commit()
+    return user.to_dict()
+
+
 @auth_routes.route('/unauthorized')
 def unauthorized():
     """

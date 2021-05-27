@@ -1,24 +1,40 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from 'react-router-dom';
-import { signUp } from '../../store/session';
+import { Redirect, useHistory } from 'react-router-dom';
+import { signUp, editUser } from '../../store/session';
 import './SignUpForm.css'
 
 const SignUpForm = () => {
   const dispatch = useDispatch();
   const user = useSelector(state => state.session.user);
+  const history = useHistory();
   const [errors, setErrors] = useState([]);
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [city, setCity] = useState("");
-  const [state, setState] = useState("");
-  const [bio, setBio] = useState("");
+  const [firstName, setFirstName] = useState(user.firstName || "");
+  const [lastName, setLastName] = useState(user.lastName || "");
+  const [email, setEmail] = useState(user.email || "");
+  const [city, setCity] = useState(user.city || "");
+  const [state, setState] = useState(user.state || "");
+  const [bio, setBio] = useState(user.bio || "");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
 
+  let btn = <button className='sign-btn' type="submit">Sign Up</button>
+
+  if(Object.keys(user).length){
+    btn = <button className='sign-btn' type="submit">Edit User Info</button>
+  }
+
   const onSignUp = async (e) => {
     e.preventDefault();
+
+    if(Object.keys(user).length){
+      if(password === repeatPassword || password === ""){
+        dispatch(editUser(firstName, lastName, email, city, state, bio, password));
+        history.push("/profiles/me");
+      return
+      }
+    }
+
     if (password === repeatPassword) {
       const data = await dispatch(signUp(firstName, lastName, email, city, state, bio, password));
 
@@ -60,9 +76,9 @@ const SignUpForm = () => {
     setRepeatPassword(e.target.value);
   };
 
-  if (user) {
-    return <Redirect to="/profiles/me" />;
-  }
+  // if (user) {
+  //   return <Redirect to="/profiles/me" />;
+  // }
 
   return (
     <div className='form-container'>
