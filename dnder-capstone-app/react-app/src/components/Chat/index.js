@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { io } from 'socket.io-client';
+import "./Chat.css"
 let socket;
 
 const Chat = () => {
@@ -28,23 +29,24 @@ const Chat = () => {
 
     const sendChat = (e) => {
         e.preventDefault()
-        socket.emit("chat", { user: user.username, msg: chatInput });
+        socket.emit("chat", { user: user.firstName, msg: chatInput });
         setChatInput("")
     }
 
     return (user && (
-        <div>
-            <div>
+        <div className="chat-container">
+            <div className="message-container">
                 {messages.map((message, ind) => (
-                    <div key={ind}>{`${message.user}: ${message.msg}`}</div>
+                    <div className="message-div" key={ind}>{`${message.user}: ${message.msg}`}</div>
                 ))}
             </div>
-            <form onSubmit={sendChat}>
+            <form className="chat-form" onSubmit={sendChat}>
                 <input
+                    className="chat-input"
                     value={chatInput}
                     onChange={updateChatInput}
                 />
-                <button type="submit">Send</button>
+                <button className="chat-button" type="submit">Send</button>
             </form>
         </div>
     )

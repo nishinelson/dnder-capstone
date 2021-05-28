@@ -126,23 +126,34 @@ const ProfilePage = () => {
             <label className="party-label">PC Parties</label>
             <div className="pc-list">
               {pcMatches?.map((dm) =>
-               <div className="party-item" key={dm.id}>
+               <NavLink to="/Chat" className="party-item dm-item" key={dm.id}>
                 <div className="party-info campaign"><label className="item-label">Campaign:</label>{dm.campaign}</div>
                 <div className="party-info"><label className="item-label">DM:</label>{dm.user.firstName}</div>
                 <div className="party-info p-size"><label className="item-label">Party Size:</label>{dm.partySize}</div>
-               </div>)}
+               </NavLink>)}
             </div>
           </div>
           <div className="dm-matches">
             <label className="party-label">DM Party</label>
-            <div className="dm-list">
+            {dmMatches?.length ? (
+            <NavLink className="dm-list" to="/Chat">
               {dmMatches?.map((pc) =>
-               <div className="party-item" key={pc.id}>
-                <div className="party-info"><label className="item-label">PC Name:</label>{pc.user.firstName}</div>
-                <div className="party-info"><label className="item-label">Class:</label>{pc.pcClass}</div>
-                <div className="party-info p-size"><label className="item-label">Experience:</label>{pc.experience}</div>
-               </div>)}
-            </div>
+                <div className="party-item" key={pc.id}>
+                  <div className="party-info"><label className="item-label">PC Name:</label>{pc.user.firstName}</div>
+                  <div className="party-info"><label className="item-label">Class:</label>{pc.pcClass}</div>
+                  <div className="party-info p-size"><label className="item-label">Experience:</label>{pc.experience}</div>
+                </div>)}
+            </NavLink>
+            ) : (
+              <div className="dm-list">
+                {dmMatches?.map((pc) =>
+                <div className="party-item" key={pc.id}>
+                  <div className="party-info"><label className="item-label">PC Name:</label>{pc.user.firstName}</div>
+                  <div className="party-info"><label className="item-label">Class:</label>{pc.pcClass}</div>
+                  <div className="party-info p-size"><label className="item-label">Experience:</label>{pc.experience}</div>
+                </div>)}
+              </div>
+            )}
           </div>
         </div>
       </div>
