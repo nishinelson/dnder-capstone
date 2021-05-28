@@ -104,7 +104,7 @@ const DMForm = () => {
           </select>
         </div>
         <div>
-          <label>Years of Experience</label>
+          <label>Experience</label>
           <select name="experience" onChange={updateExperience} value={experience}>
             <option value="">--experience range--</option>
             <option value="novice">Novice</option>

@@ -19,7 +19,7 @@ export const clearDM = () => async (dispatch) => {
 }
 
 export const deleteDM = () => async (dispatch) => {
-  fetch("/api/DM/delete")
+  await fetch("/api/DM/delete")
   dispatch(removeDM());
 }
 

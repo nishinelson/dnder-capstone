@@ -44,16 +44,22 @@ def setSwipe():
 @match_routes.route('/dmMatches')
 @login_required
 def setMatchesDM():
-  matchesDM = PC.query.join(Match).filter(Match.dmId == current_user.dm.id).filter(Match.dmSwipeBool == True, Match.pcSwipeBool == True).all()
-  dms = [card.to_dict() for card in matchesDM]
-  return {'DMmatches': dms}
+  if current_user.dm != None:
+    matchesDM = PC.query.join(Match).filter(Match.dmId == current_user.dm.id).filter(Match.dmSwipeBool == True, Match.pcSwipeBool == True).all()
+    dms = [card.to_dict() for card in matchesDM]
+    return {'DMmatches': dms}
+  else:
+    return {'DMmatches': []}
 
 
 @match_routes.route('/pcMatches')
 @login_required
 def setMatchesPC():
-  matchesPC = DM.query.join(Match).filter(Match.pcId == current_user.pc.id).filter(Match.dmSwipeBool == True, Match.pcSwipeBool == True).all()
-  pcs = [card.to_dict() for card in matchesPC]
-  return {'PCmatches': pcs}
+  if current_user.pc != None:
+    matchesPC = DM.query.join(Match).filter(Match.pcId == current_user.pc.id).filter(Match.dmSwipeBool == True, Match.pcSwipeBool == True).all()
+    pcs = [card.to_dict() for card in matchesPC]
+    return {'PCmatches': pcs}
+  else:
+    return {'PCmatches': []}
 
 # checkout route and make sure all logic is appropriate

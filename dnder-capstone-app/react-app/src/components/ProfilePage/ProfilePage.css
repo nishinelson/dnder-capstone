@@ -28,15 +28,76 @@
   padding: 15px;
 }
 
-/* .user-contact {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-} */
-
 .bio-div {
   height: 65%;
   overflow-y: scroll;
+}
+
+.match-container{
+  display: flex;
+  box-sizing: border-box;
+  width: 40vw;
+  height: 40vh;
+  justify-content: space-between;
+}
+
+.pc-matches, .dm-matches{
+  display: flex;
+  flex-direction: column;
+  width: 19vw;
+  height: 30vh;
+  /* border-radius: 10px;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  background-color: rgba(247, 247, 233, 0.6); */
+}
+
+.party-item{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 95%;
+  height: 18%;
+  box-sizing: border-box;
+  margin-bottom: 5px;
+  background-color: rgba(223, 221, 219);
+  border-radius: 10px;
+  padding: 0 4px;
+}
+
+.party-info{
+  display: flex;
+  flex-direction: column;
+}
+
+.campaign{
+  overflow-x: hidden;
+}
+
+.p-size{
+  display: flex;
+  align-items: center;
+}
+
+.pc-list, .dm-list{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  overflow-y: hidden;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  background-color: rgba(247, 247, 233, 0.6);
+  padding-top: 8px;
+}
+
+.party-label {
+  align-self: center;
+  color: darkred;
+  font-size: 24px;
+}
+
+.item-label{
+  font-weight: bold;
 }
 
 .card-div {
@@ -53,7 +114,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-
 }
 
 .pc-info, .dm-info {
