@@ -126,7 +126,7 @@ const ProfilePage = () => {
             <label className="party-label">PC Parties</label>
             <div className="pc-list">
               {pcMatches?.map((dm) =>
-               <NavLink to="/Chat" className="party-item dm-item" key={dm.id}>
+               <NavLink to={`/chat/${dm.id}`} className="party-item dm-item" key={dm.id}>
                 <div className="party-info campaign"><label className="item-label">Campaign:</label>{dm.campaign}</div>
                 <div className="party-info"><label className="item-label">DM:</label>{dm.user.firstName}</div>
                 <div className="party-info p-size"><label className="item-label">Party Size:</label>{dm.partySize}</div>
@@ -136,7 +136,7 @@ const ProfilePage = () => {
           <div className="dm-matches">
             <label className="party-label">DM Party</label>
             {dmMatches?.length ? (
-            <NavLink className="dm-list" to="/Chat">
+            <NavLink className="dm-list" to={`/chat/${dunMas.id}`}>
               {dmMatches?.map((pc) =>
                 <div className="party-item" key={pc.id}>
                   <div className="party-info"><label className="item-label">PC Name:</label>{pc.user.firstName}</div>

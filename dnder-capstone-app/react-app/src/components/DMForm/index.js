@@ -75,6 +75,7 @@ const DMForm = () => {
           name="campaign"
           onChange={updateCampaign}
           value={campaign}
+          required={true}
           ></input>
         </div>
         <div>
@@ -84,11 +85,12 @@ const DMForm = () => {
           name="resources"
           onChange={updateResources}
           value={resources}
+          required={true}
           ></input>
         </div>
         <div className="group-type">
           <label>Party Size</label>
-          <select name="partySize" onChange={updatePartySize} value={partySize}>
+          <select name="partySize" onChange={updatePartySize} value={partySize} required={true}>
             <option value="">--party size--</option>
             <option value="1-3">1-3</option>
             <option value="4-6">4-6</option>
@@ -97,7 +99,7 @@ const DMForm = () => {
         </div>
         <div className="group-type">
           <label>Group Type</label>
-          <select name="groupType" onChange={updateGroupType} value={groupType}>
+          <select name="groupType" onChange={updateGroupType} value={groupType} required={true}>
             <option value="">--group type--</option>
             <option value="in-person">in-person</option>
             <option value="remote">remote</option>
@@ -105,7 +107,7 @@ const DMForm = () => {
         </div>
         <div>
           <label>Experience</label>
-          <select name="experience" onChange={updateExperience} value={experience}>
+          <select name="experience" onChange={updateExperience} value={experience} required={true}>
             <option value="">--experience range--</option>
             <option value="novice">Novice</option>
             <option value="adept">Adept</option>
@@ -113,7 +115,7 @@ const DMForm = () => {
           </select>
         </div>
         <div>
-          <label>Character Description</label>
+          <label>Party Description</label>
           <textarea
           type="text"
           name="description"

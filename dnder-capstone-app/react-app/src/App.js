@@ -59,7 +59,7 @@ function App() {
         <ProtectedRoute path="/DM" exact={true}>
           <DMForm/>
         </ProtectedRoute>
-        <ProtectedRoute path="/chat" exact={true}>
+        <ProtectedRoute path="/chat/:id" exact={true}>
           <Chat/>
         </ProtectedRoute>
         <ProtectedRoute path="/swipe/:card/:location" exact={true}>
