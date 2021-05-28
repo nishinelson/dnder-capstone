@@ -19,7 +19,7 @@ export const clearPC = () => async (dispatch) => {
 }
 
 export const deletePC = () => async (dispatch) => {
-  fetch("/api/PC/delete")
+  await fetch("/api/PC/delete")
   dispatch(removePC())
 }
 

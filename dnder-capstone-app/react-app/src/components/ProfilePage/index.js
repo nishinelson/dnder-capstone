@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux"
 import { NavLink } from "react-router-dom"
 import { getPC, deletePC } from "../../store/pc"
 import { getDM, deleteDM } from "../../store/dm"
-import { getDMmatches, getPCmatches } from "../../store/match"
+import { clearMatch, getDMmatches, getPCmatches } from "../../store/match"
 import './ProfilePage.css'
 
 const ProfilePage = () => {
@@ -11,34 +11,31 @@ const ProfilePage = () => {
   const user = useSelector((state) => state?.session?.user);
 
   useEffect(() => {
+    dispatch(clearMatch())
     dispatch(getPC());
     dispatch(getDM());
+    dispatch(getDMmatches());
+    dispatch(getPCmatches());
   }, []);
 
   const char = useSelector((state) => state?.pc);
   const dunMas = useSelector((state) => state?.dm);
-
-  useEffect(() =>{
-    if(Object.values(dunMas).length){
-      dispatch(getDMmatches());
-    }
-
-    if(Object.values(char).length){
-      dispatch(getPCmatches());
-    }
-  })
+  const dmMatches = useSelector((state) => state?.match?.DMmatches);
+  const pcMatches = useSelector((state) => state?.match?.PCmatches);
 
   let pcRender;
   let dmRender;
   let dmSearch;
   let pcSearch;
 
-  const deletePCcard = () => {
-    dispatch(deletePC())
+  const deletePCcard = async () => {
+    await dispatch(deletePC());
+    await dispatch(getPCmatches());
   }
 
-  const deleteDMcard = () => {
-    dispatch(deleteDM())
+  const deleteDMcard = async () => {
+    await dispatch(deleteDM());
+    await dispatch(getDMmatches());
   }
 
   if(dunMas.groupType === "remote"){
@@ -121,11 +118,33 @@ const ProfilePage = () => {
         <div className='user-info'>
           <div className="location-div"><b>Location:</b> {user.city}, {user.state}</div>
           <div className="contact-div"><b>Contact Info:</b> {user.email}</div>
-          {/* <div className='user-contact'>
-          </div> */}
           <div className="bio-div"><b>Bio:</b> {user.bio}</div>
         </div>
         <NavLink className="card-btns" to="/sign-up">Edit</NavLink>
+        <div className="match-container">
+          <div className="pc-matches">
+            <label className="party-label">PC Parties</label>
+            <div className="pc-list">
+              {pcMatches?.map((dm) =>
+               <div className="party-item" key={dm.id}>
+                <div className="party-info campaign"><label className="item-label">Campaign:</label>{dm.campaign}</div>
+                <div className="party-info"><label className="item-label">DM:</label>{dm.user.firstName}</div>
+                <div className="party-info p-size"><label className="item-label">Party Size:</label>{dm.partySize}</div>
+               </div>)}
+            </div>
+          </div>
+          <div className="dm-matches">
+            <label className="party-label">DM Party</label>
+            <div className="dm-list">
+              {dmMatches?.map((pc) =>
+               <div className="party-item" key={pc.id}>
+                <div className="party-info"><label className="item-label">PC Name:</label>{pc.user.firstName}</div>
+                <div className="party-info"><label className="item-label">Class:</label>{pc.pcClass}</div>
+                <div className="party-info p-size"><label className="item-label">Experience:</label>{pc.experience}</div>
+               </div>)}
+            </div>
+          </div>
+        </div>
       </div>
       <div className='card-div'>
         {pcRender}

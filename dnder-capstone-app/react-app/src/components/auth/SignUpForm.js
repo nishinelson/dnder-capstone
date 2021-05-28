@@ -1,20 +1,20 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { signUp, editUser } from '../../store/session';
 import './SignUpForm.css'
 
 const SignUpForm = () => {
   const dispatch = useDispatch();
-  const user = useSelector(state => state.session.user);
+  const user = useSelector(state => state?.session?.user || {});
   const history = useHistory();
   const [errors, setErrors] = useState([]);
-  const [firstName, setFirstName] = useState(user.firstName || "");
-  const [lastName, setLastName] = useState(user.lastName || "");
-  const [email, setEmail] = useState(user.email || "");
-  const [city, setCity] = useState(user.city || "");
-  const [state, setState] = useState(user.state || "");
-  const [bio, setBio] = useState(user.bio || "");
+  const [firstName, setFirstName] = useState(user?.firstName || "");
+  const [lastName, setLastName] = useState(user?.lastName || "");
+  const [email, setEmail] = useState(user?.email || "");
+  const [city, setCity] = useState(user?.city || "");
+  const [state, setState] = useState(user?.state || "");
+  const [bio, setBio] = useState(user?.bio || "");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
 
@@ -41,6 +41,8 @@ const SignUpForm = () => {
       if (data.errors) {
         setErrors(data.errors);
       }
+      history.push("/profiles/me");
+      return
     }
   };
 
@@ -178,7 +180,7 @@ const SignUpForm = () => {
             required={true}
           ></input>
         </div>
-        <button className='sign-btn' type="submit">Sign Up</button>
+        {btn}
       </form>
     </div>
   );

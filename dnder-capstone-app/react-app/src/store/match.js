@@ -30,7 +30,8 @@ export const clearMatch = () => async(dispatch) => {
 export const getDMmatches = () => async (dispatch) => {
   let response = await fetch("/api/match/dmMatches")
   if(!response.ok){
-    throw response;
+    dispatch(getMatches({}))
+    throw response
   }
   let matches = await response.json();
   dispatch(getMatches(matches));
@@ -40,6 +41,7 @@ export const getDMmatches = () => async (dispatch) => {
 export const getPCmatches = () => async (dispatch) => {
   let response = await fetch("/api/match/pcMatches")
   if(!response.ok){
+    dispatch(getMatches({}))
     throw response;
   }
   let matches = await response.json();
