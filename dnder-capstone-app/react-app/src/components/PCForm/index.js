@@ -60,7 +60,7 @@ const PCForm = () => {
       <form onSubmit={onCreatePC}>
         <div>
           <label>Character Class</label>
-          <select name="pcClass" onChange={updatepcClass} value={pcClass}>
+          <select name="pcClass" onChange={updatepcClass} value={pcClass} required={true}>
             <option value="">--Select Your Class--</option>
             <option value="barbarian">Barbarian</option>
             <option value="bard">Bard</option>
@@ -78,7 +78,7 @@ const PCForm = () => {
         </div>
         <div>
           <label>Years of Experience</label>
-          <select name="experience" onChange={updateExperience} value={experience}>
+          <select name="experience" onChange={updateExperience} value={experience} required={true}>
             <option value="">--experience range--</option>
             <option value="0-1">0-1</option>
             <option value="1-5">1-5</option>
@@ -96,7 +96,7 @@ const PCForm = () => {
         </div>
         <div className="group-type">
           <label>Group Type</label>
-          <select className="group-sel" name="groupType" onChange={updateGroupType} value={groupType}>
+          <select className="group-sel" name="groupType" onChange={updateGroupType} value={groupType} required={true}>
             <option value="">--in-person or remote?--</option>
             <option value="in-person">in-person</option>
             <option value="remote">remote</option>

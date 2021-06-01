@@ -13,6 +13,7 @@ import Splash from "./components/Splash"
 import PCForm from "./components/PCForm"
 import DMForm from "./components/DMForm"
 import SwipePage from "./components/SwipePage"
+import Chat from "./components/Chat"
 import "./index.css"
 // import { authenticate } from "./services/auth";
 import { authenticate } from "./store/session";
@@ -57,6 +58,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path="/DM" exact={true}>
           <DMForm/>
+        </ProtectedRoute>
+        <ProtectedRoute path="/chat/:id" exact={true}>
+          <Chat/>
         </ProtectedRoute>
         <ProtectedRoute path="/swipe/:card/:location" exact={true}>
           <SwipePage />
