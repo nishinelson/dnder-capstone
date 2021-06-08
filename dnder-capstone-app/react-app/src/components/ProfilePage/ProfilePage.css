@@ -3,6 +3,7 @@
   display: grid;
   grid-template-columns: 50% 50%;
   grid-template-rows: 100%;
+  height: 85vh
 }
 
 .bio {
