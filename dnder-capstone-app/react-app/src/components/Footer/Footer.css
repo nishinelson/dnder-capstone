@@ -2,10 +2,11 @@
   grid-row: 3;
   display: flex;
   justify-content: space-evenly;
-  height: 5vh;
+  height: 8vh;
   box-sizing: border-box;
-  margin: 0 15px;
+  /* margin: 0 15px; */
   border-top: solid 2px darkred;
+  /* padding: 15px 0px; */
 }
 
 .foot-a {
@@ -21,4 +22,9 @@
 .name {
   font-size: 34px;
   color: darkred;
+}
+
+.name, .foot-a {
+  display: flex;
+  align-items: center;
 }

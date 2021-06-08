@@ -2,14 +2,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Merienda&display=swap');
 body {
   display: grid;
-  grid-template-rows: 5vh 85vh 10vh;
+  /* grid-template-rows: 5vh 85vh 10vh; */
   margin: 0;
   font-family: 'Merienda', cursive;
   background-image: url('https://i.imgur.com/J4a7WHN.jpg');
 }
 #root {
   display: grid;
-  grid-template-rows: 5vh 90vh 5vh;
+  grid-template-rows: 5vh 87vh 8vh;
 }
 
 .nav-link {
