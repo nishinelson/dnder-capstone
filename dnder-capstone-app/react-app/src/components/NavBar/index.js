@@ -1,11 +1,13 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { useSelector } from "react-redux"
+import { useSelector, useDispatch } from "react-redux"
+import { login } from "../../store/session";
 import LogoutButton from '../auth/LogoutButton';
 import './NavBar.css'
 
 const NavBar = () => {
   const user = useSelector((state) => state?.session?.user)
+  const dispatch = useDispatch();
 
   let render;
 
@@ -24,9 +26,15 @@ const NavBar = () => {
         <NavLink className='nav-link' to="/" exact={true} activeClassName="active">
             Home
           </NavLink>
-          <NavLink className='nav-link' to="/login" exact={true}>
-            Login
-          </NavLink>
+          <div className="sign-in-div">
+            <button className='demo-btn nav-btn' type='submit' onClick={() => dispatch(login("demo@aa.io", "password1"))}>Demo</button>
+            <NavLink className='signUp nav-btn' to="/sign-up">
+              Sign Up
+            </NavLink>
+            <NavLink className='nav-link nav-btn' to="/login" exact={true}>
+              Log In
+            </NavLink>
+          </div>
       </nav>
     )
   }

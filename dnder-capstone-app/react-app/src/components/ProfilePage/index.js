@@ -74,7 +74,7 @@ const ProfilePage = () => {
   } else {
     pcRender = (
       <div>
-        <NavLink className="card-btns" to="/PC">Create a PC</NavLink>
+        <NavLink className="card-btns create-card" to="/PC">Create a PC</NavLink>
       </div>
     )
   }
@@ -105,8 +105,10 @@ const ProfilePage = () => {
     )
   } else {
     dmRender = (
-      <div>
-        <NavLink className="card-btns" to="/DM">Create a DM</NavLink>
+      <div className="dm-container">
+        <div className="dm-info create-card">
+          <NavLink className="card-btns" to="/DM">Create a DM</NavLink>
+        </div>
       </div>
     )
   }
