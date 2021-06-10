@@ -105,7 +105,7 @@ const DMForm = () => {
             <option value="remote">remote</option>
           </select>
         </div>
-        <div>
+        <div className="group-type">
           <label>Experience</label>
           <select name="experience" onChange={updateExperience} value={experience} required={true}>
             <option value="">--experience range--</option>

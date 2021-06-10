@@ -121,7 +121,7 @@
   align-items: center;
 }
 
-.pc-info, .dm-info {
+.pc-info, .dm-info, .create-card{
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
@@ -133,6 +133,14 @@
   box-shadow: 2px 2px 4px 4px rgba(0, 0, 0, 0.2);
   color: black;
   border: solid 5px black;
+}
+
+.create-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 34px 0px;
+  box-sizing: border-box;
 }
 
 #pcCard {

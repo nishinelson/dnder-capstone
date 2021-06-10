@@ -6,3 +6,7 @@ nav {
   box-sizing: border-box;
   margin: 10px 20px;
 }
+
+.nav-btn{
+  margin-right: 15px;
+}
