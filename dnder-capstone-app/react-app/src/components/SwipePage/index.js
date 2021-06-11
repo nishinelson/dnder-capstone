@@ -125,7 +125,7 @@ function SwipePage () {
         {matchHeader}
         <div className='cardContainer'>
           {cards?.map((card) =>
-            <TinderCard className='swipe' key={card.id} onSwipe={(dir) => swiped(dir, card.id, dmSwipe, pcSwipe)}>
+            <TinderCard className='swipe' key={card.id} preventSwipe={["up", "down"]} onSwipe={(dir) => swiped(dir, card.id, dmSwipe, pcSwipe)}>
               <div id="cardId" className={`card ${card.pcClass} ${card.experience}`}>
                 <div className='cardInfo'>
                   <h3>{card.user.firstName}</h3>
