@@ -4,7 +4,7 @@
   justify-content: space-evenly;
   flex-direction: column;
   align-items: center;
-  height: 60vh;
+  /* height: 60vh; */
 }
 
 .splashWelcome {
@@ -45,4 +45,18 @@
 
 .signUp:hover, .demo-btn:hover {
   color: darkred;
+}
+
+.intro{
+  font-size: 30px;
+}
+
+.first-instr{
+  font-size: 24px;
+}
+
+.instruct-img-1{
+  height: 45vh;
+  width: 60vw;
+  border: solid 2px black;
 }
