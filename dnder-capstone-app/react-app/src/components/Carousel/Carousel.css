@@ -1,0 +1,18 @@
+.alice-carousel{
+  /* display: flex;
+  justify-content: center; */
+  /* grid-row: 2; */
+  height: 39vh;
+  width: 49vw;
+  margin: 0;
+  margin-bottom: 10vh;
+}
+
+.img-text{
+  font-size: 2vh;
+}
+
+
+/* .alice-carousel__next-btn{
+  margin-bottom: 10vh;
+} */
