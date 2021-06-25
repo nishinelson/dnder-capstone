@@ -5,14 +5,14 @@ Dnder is a tinder inspired app that allows users to make Player and/or Dungeon M
 - Deployed on Heroku: [dnder](https://dnder.herokuapp.com/)
 
 ## Technology Used:
--React
--Redux
--Flask
--Flask-SQLAlchemy
--PostgreSQL
--react-tinder-card
--react-alice-carousel
+- React
+- Redux
+- Flask
+- Flask-SQLAlchemy
+- PostgreSQL
+- react-tinder-card
+- react-alice-carousel
 
 ## Features
--Dashboard/User Profile is where the user has full CRUD operations over their Player or DM cards. They will also be able to see their matches when they get them.
-![Dashboard](dnder-capstone-app/images/dashboard.png)
+- Dashboard/User Profile is where the user has full CRUD operations over their Player or DM cards. They will also be able to see their matches when they get them.
+![Dashboard](dnder-capstone-app/images/dashboard.PNG)
